@@ -39,13 +39,17 @@ interface Arista {
   largo: number;
 }
 
+/** Metros que «cuesta» subir o bajar pisos en un tramo: en ascensor no se camina. */
+const metrosVerticales = (c: Camino, a: Lugar, b: Lugar, cfg: Config) =>
+  c.tipo === 'ascensor' ? 0 : Math.abs(a.piso - b.piso) * cfg.metros_por_piso;
+
 export function largoCamino(c: Camino, a: Lugar, b: Lugar, cfg: Config): number {
   if (c.distancia_m != null) return c.distancia_m;
   const plano =
     a.x != null && a.y != null && b.x != null && b.y != null
       ? Math.hypot(a.x - b.x, a.y - b.y) * cfg.metros_por_pixel
       : 0;
-  return plano + Math.abs(a.piso - b.piso) * cfg.metros_por_piso;
+  return plano + metrosVerticales(c, a, b, cfg);
 }
 
 function tiempoTramo(c: Camino, largo: number, pisos: number, cfg: Config, accesible: boolean): number {
@@ -130,7 +134,7 @@ export function calcularRuta(datos: DatosCampus, desdeId: string, hastaId: strin
   for (const { arista, hacia, de } of tramos) {
     const c = arista.camino;
     const cambioPiso = Math.abs(hacia.piso - de.piso);
-    const horizontal = c.distancia_m ?? arista.largo - cambioPiso * cfg.metros_por_piso;
+    const horizontal = c.distancia_m ?? arista.largo - metrosVerticales(c, de, hacia, cfg);
     pisos += cambioPiso;
     caminado += horizontal;
     tiempo += tiempoTramo(c, arista.largo, cambioPiso, cfg, accesible);
