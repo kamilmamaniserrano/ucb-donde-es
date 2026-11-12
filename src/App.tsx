@@ -5,8 +5,10 @@ import ListaEventos from './components/ListaEventos';
 import Directorio from './components/Directorio';
 import Marca from './components/Marca';
 import { cargarDatos } from './lib/datos';
+import { georreferencia, origenDesdeGps } from './lib/gps';
 import { calcularRuta, INGRESO_PRINCIPAL } from './lib/rutas';
 import { esVisible, type DatosCampus } from './lib/tipos';
+import { useUbicacionGps } from './lib/useUbicacionGps';
 
 type Pestana = 'eventos' | 'ruta' | 'directorio';
 
@@ -27,6 +29,8 @@ export default function App() {
   const [accesible, setAccesible] = useState(inicial.get('accesible') === '1');
   const [desdeQR, setDesdeQR] = useState(inicial.has('desde'));
   const [tocadoId, setTocadoId] = useState<string | null>(null);
+  const { gps, iniciar: iniciarGps, detener: detenerGps } = useUbicacionGps(georreferencia);
+  const [siguiendoGps, setSiguiendoGps] = useState(false);
 
   useEffect(() => {
     cargarDatos().then((d) => {
@@ -49,6 +53,23 @@ export default function App() {
     window.history.replaceState(null, '', consulta ? `${window.location.pathname}?${consulta}` : window.location.pathname);
   }, [desdeId, hastaId, accesible]);
 
+  const origenGps = useMemo(
+    () => (datos && gps.estado === 'activo' ? origenDesdeGps(datos, gps.x, gps.y) : null),
+    [datos, gps],
+  );
+  const ubicacionGps = useMemo(
+    () =>
+      gps.estado === 'activo'
+        ? { x: gps.x, y: gps.y, radio: gps.precision_m / georreferencia.metrosPorPixel }
+        : null,
+    [gps],
+  );
+
+  // Mientras el GPS está en uso, el origen de la ruta sigue a la persona.
+  useEffect(() => {
+    if (siguiendoGps && origenGps) setDesdeId(origenGps.lugar.id);
+  }, [siguiendoGps, origenGps]);
+
   const resultado = useMemo(
     () => (datos && hastaId ? calcularRuta(datos, desdeId, hastaId, accesible) : null),
     [datos, desdeId, hastaId, accesible],
@@ -64,6 +85,18 @@ export default function App() {
   const cambiarDesde = (id: string) => {
     setDesdeId(id);
     setDesdeQR(false);
+    setSiguiendoGps(false);
+  };
+
+  const usarGps = () => {
+    setSiguiendoGps(true);
+    setDesdeQR(false);
+    iniciarGps();
+  };
+
+  const dejarGps = () => {
+    setSiguiendoGps(false);
+    detenerGps();
   };
 
   const ruta = resultado?.ok ? resultado.ruta : null;
@@ -97,9 +130,14 @@ export default function App() {
                 accesible={accesible}
                 desdeQR={desdeQR}
                 resultado={resultado}
+                gps={gps}
+                origenGps={origenGps}
+                siguiendoGps={siguiendoGps}
                 onDesde={cambiarDesde}
                 onHasta={setHastaId}
                 onAccesible={setAccesible}
+                onUsarGps={usarGps}
+                onDejarGps={dejarGps}
               />
             )}
             {pestana === 'directorio' && <Directorio datos={datos} onIr={irA} />}
@@ -111,6 +149,7 @@ export default function App() {
               ruta={ruta}
               desdeId={desdeId}
               hastaId={hastaId}
+              ubicacionGps={ubicacionGps}
               modoGrafo={modoGrafo}
               onElegirLugar={setTocadoId}
             />

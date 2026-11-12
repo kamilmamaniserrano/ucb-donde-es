@@ -387,6 +387,40 @@ code {
   padding: 14px;
 }
 
+.boton-gps {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px dashed #2563eb;
+  background: var(--blanco);
+  color: #1d4ed8;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.boton-gps:hover {
+  background: #eef4ff;
+}
+
+.boton-gps.activo {
+  border-style: solid;
+  background: #e3ecff;
+}
+
+.estado-gps {
+  font-size: 0.82rem;
+  color: #1d4ed8;
+  margin-top: -4px;
+}
+
+.estado-gps.error {
+  color: var(--rojo);
+}
+
 .intercambiar {
   align-self: flex-end;
   margin: -6px 0;

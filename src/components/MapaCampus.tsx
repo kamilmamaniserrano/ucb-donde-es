@@ -18,6 +18,7 @@ const COLORES = {
   desde: '#16a34a',
   hasta: '#f7941d',
   ruta: '#e8590c',
+  gps: '#2563eb',
 };
 
 interface Props {
@@ -25,17 +26,21 @@ interface Props {
   ruta: Ruta | null;
   desdeId: string;
   hastaId: string | null;
+  /** Posición GPS en coordenadas del plano; `radio` es la precisión, también en píxeles del plano. */
+  ubicacionGps: { x: number; y: number; radio: number } | null;
   modoGrafo: boolean;
   onElegirLugar: (id: string) => void;
 }
 
-export default function MapaCampus({ datos, ruta, desdeId, hastaId, modoGrafo, onElegirLugar }: Props) {
+export default function MapaCampus({ datos, ruta, desdeId, hastaId, ubicacionGps, modoGrafo, onElegirLugar }: Props) {
   const contenedor = useRef<HTMLDivElement>(null);
   const mapa = useRef<L.Map | null>(null);
   const capaGrafo = useRef<L.LayerGroup | null>(null);
   const capaRuta = useRef<L.LayerGroup | null>(null);
   const capaLugares = useRef<L.LayerGroup | null>(null);
+  const capaGps = useRef<L.LayerGroup | null>(null);
   const hayRuta = useRef(false);
+  const habiaGps = useRef(false);
   const alElegir = useRef(onElegirLugar);
 
   useEffect(() => {
@@ -53,6 +58,7 @@ export default function MapaCampus({ datos, ruta, desdeId, hastaId, modoGrafo, o
     capaGrafo.current = L.layerGroup().addTo(m);
     capaRuta.current = L.layerGroup().addTo(m);
     capaLugares.current = L.layerGroup().addTo(m);
+    capaGps.current = L.layerGroup().addTo(m);
     mapa.current = m;
     // Mientras la persona no mueva el mapa, se reencuadra el campus cada vez que cambia
     // el tamaño del contenedor (carga de fuentes, rotar el celular, etc.).
@@ -124,6 +130,32 @@ export default function MapaCampus({ datos, ruta, desdeId, hastaId, modoGrafo, o
     }
     m.flyToBounds(L.latLngBounds(puntos), { padding: [50, 50], maxZoom: 1.25, duration: 0.6 });
   }, [ruta]);
+
+  useEffect(() => {
+    const capa = capaGps.current;
+    const m = mapa.current;
+    if (!capa || !m) return;
+    capa.clearLayers();
+    if (!ubicacionGps) {
+      habiaGps.current = false;
+      return;
+    }
+    const centro = aLatLng(ubicacionGps.x, ubicacionGps.y);
+    L.circle(centro, {
+      radius: ubicacionGps.radio,
+      color: COLORES.gps,
+      weight: 1,
+      fillColor: COLORES.gps,
+      fillOpacity: 0.12,
+      interactive: false,
+    }).addTo(capa);
+    L.circleMarker(centro, { radius: 8, color: '#fff', weight: 3, fillColor: COLORES.gps, fillOpacity: 1 })
+      .bindTooltip('Tu ubicación (GPS)', { direction: 'top', offset: [0, -8] })
+      .addTo(capa);
+    // Con la primera posición se centra el mapa en la persona, salvo que ya haya una ruta a la vista.
+    if (!habiaGps.current && !hayRuta.current) m.panTo(centro);
+    habiaGps.current = true;
+  }, [ubicacionGps]);
 
   useEffect(() => {
     const capa = capaGrafo.current;

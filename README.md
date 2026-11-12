@@ -9,6 +9,8 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
   pasos, los metros que se caminan, el tiempo aproximado y los pisos que se suben. Tiene un modo **sin escaleras**.
 - **Directorio**: buscador de oficinas, carreras y aulas (por ejemplo «Kardex», «Caja», «D12»), con las
   dependencias de los bloques del mapa. Solo incluye lugares dibujados en el mapa del campus principal.
+- **GPS**: el botón «Usar mi ubicación» muestra a la persona en el mapa (punto azul con su precisión) y usa el
+  lugar más cercano como origen de la ruta, actualizándolo mientras camina.
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.
@@ -91,9 +93,15 @@ Si cambias los JSON de `src/data`, ejecuta `npm run seed` para regenerar `supaba
 
 ### Calibrar la escala
 
-La escala actual es **0,478 m por píxel**. Se calibró recorriendo el frente del campus sobre la Av. 14 de
-Septiembre, de extremo a extremo: 212 pasos de 3¼ pies (0,99 m), unos 210 m, que en el plano son 439 px (de x=195 a
-x=634).
+La escala actual es **0,31 m por píxel**. Se calibró con dos medidas tomadas con «Medir distancia» de Google Maps:
+
+| Medida | Real | En el plano | Escala |
+|---|---|---|---|
+| Frente del campus sobre la Av. 14 de Septiembre, de esquina a esquina | 136,9 m | 440 px (x=195 a x=635) | 0,311 m/px |
+| Coliseo, lado largo | 44,41 m | ~148 px | 0,300 m/px |
+
+El plano es un dibujo y no está perfectamente a escala. En la zona central, los puntos GPS de la Capilla, el Coliseo
+y el Ingreso indican unos 0,25 m/px, así que las distancias son una buena aproximación, no una medida exacta.
 
 Si se hace una medición mejor:
 
@@ -102,6 +110,22 @@ Si se hace una medición mejor:
 2. En `/admin → Escala del mapa`, elige esos dos puntos y escribe los metros.
 
 Todas las distancias y los tiempos se recalculan solos.
+
+## GPS (georreferencia del plano)
+
+El navegador entrega la posición en latitud y longitud. Para dibujarla en el plano, `src/lib/gps.ts` ajusta una
+transformación (escala, rotación y traslación) a partir de los puntos de control de
+`src/data/georreferencia.json`. Cada punto tiene su posición en el plano (`x`, `y`) y en Google Maps (`lat`,
+`lng`).
+
+- Hoy se usan 3 puntos: el centro del techo de la Capilla «El Arca», el centro del techo del Coliseo y el ingreso
+  principal. Con ellos, el error es de unos 2 m.
+- Para agregar un punto, ubícalo en Google Maps en vista satélite (clic derecho → copiar coordenadas) y toma su
+  `x, y` en la app con `?grafo=1`. Usa puntos fáciles de reconocer en ambos lados y repartidos por el campus.
+- Fuera del rectángulo del campus, la app guía desde el ingreso principal.
+- Como el GPS no distingue pisos, solo se eligen lugares de planta baja.
+- Necesita HTTPS (Vercel ya lo tiene) y que la persona acepte el permiso de ubicación. Al aire libre la precisión
+  típica es de 5 a 15 m; dentro de los bloques conviene usar los códigos QR.
 
 ## Datos que hay que verificar en el campus
 

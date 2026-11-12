@@ -166,7 +166,7 @@ insert into public.eventos (id, titulo, descripcion, inicio, fin, lugar_id, ambi
 on conflict (id) do nothing;
 
 insert into public.config (clave, valor) values
-  ('metros_por_pixel', 0.478),
+  ('metros_por_pixel', 0.31),
   ('escala_calibrada', 1),
   ('velocidad_m_s', 1.2),
   ('velocidad_accesible_m_s', 0.8),

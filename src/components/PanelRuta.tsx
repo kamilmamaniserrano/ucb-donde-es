@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
+import type { OrigenGps } from '../lib/gps';
 import { formatoDistancia, formatoTiempo, type ResultadoRuta } from '../lib/rutas';
 import { esVisible, ordenarPorNombre, type DatosCampus } from '../lib/tipos';
+import type { EstadoGps } from '../lib/useUbicacionGps';
 
 const ATAJOS = ['coliseo', 'paraninfo', 'biblioteca', 'cafeteria', 'bloque_k'];
 
@@ -11,12 +13,42 @@ interface Props {
   accesible: boolean;
   desdeQR: boolean;
   resultado: ResultadoRuta | null;
+  gps: EstadoGps;
+  origenGps: OrigenGps | null;
+  siguiendoGps: boolean;
   onDesde: (id: string) => void;
   onHasta: (id: string | null) => void;
   onAccesible: (valor: boolean) => void;
+  onUsarGps: () => void;
+  onDejarGps: () => void;
 }
 
-export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR, resultado, onDesde, onHasta, onAccesible }: Props) {
+function mensajeGps(gps: EstadoGps, origen: OrigenGps | null, siguiendo: boolean): string | null {
+  if (gps.estado === 'buscando') return 'Buscando tu ubicación… Acepta el permiso si el navegador lo pide.';
+  if (gps.estado === 'error') return gps.mensaje;
+  if (gps.estado !== 'activo' || !siguiendo || !origen) return null;
+  const precision = `precisión ±${Math.round(gps.precision_m)} m`;
+  if (origen.fuera) return `Estás fuera del campus (${precision}). Te guiamos desde el ingreso principal.`;
+  const debil = gps.precision_m > 30 ? ' La señal es débil: si puedes, escanea un código QR.' : '';
+  return `Estás cerca de ${origen.lugar.nombre} (${precision}).${debil}`;
+}
+
+export default function PanelRuta({
+  datos,
+  desdeId,
+  hastaId,
+  accesible,
+  desdeQR,
+  resultado,
+  gps,
+  origenGps,
+  siguiendoGps,
+  onDesde,
+  onHasta,
+  onAccesible,
+  onUsarGps,
+  onDejarGps,
+}: Props) {
   const porId = useMemo(() => new Map(datos.lugares.map((l) => [l.id, l])), [datos]);
   const enCampus = useMemo(() => ordenarPorNombre(datos.lugares.filter(esVisible)), [datos]);
   const ingresos = enCampus.filter((l) => l.tipo === 'ingreso');
@@ -24,6 +56,8 @@ export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR,
   const desde = porId.get(desdeId);
   const hasta = hastaId ? porId.get(hastaId) : undefined;
   const ruta = resultado?.ok ? resultado.ruta : null;
+  const gpsEnUso = siguiendoGps && (gps.estado === 'buscando' || gps.estado === 'activo');
+  const avisoGps = mensajeGps(gps, origenGps, siguiendoGps);
 
   const opcionesCampus = (
     <>
@@ -57,6 +91,21 @@ export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR,
             {opcionesCampus}
           </select>
         </label>
+
+        <button
+          type="button"
+          className={`boton-gps${gpsEnUso ? ' activo' : ''}`}
+          aria-pressed={gpsEnUso}
+          onClick={gpsEnUso ? onDejarGps : onUsarGps}
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" strokeWidth="2" />
+          </svg>
+          {gpsEnUso ? 'Dejar de usar el GPS' : 'Usar mi ubicación (GPS)'}
+        </button>
+        {avisoGps && <p className={`estado-gps${gps.estado === 'error' ? ' error' : ''}`}>{avisoGps}</p>}
 
         <button
           type="button"
