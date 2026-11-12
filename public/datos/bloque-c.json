@@ -1,0 +1,3427 @@
+{
+ "bloque": "C",
+ "lugar_id": "bloque_c",
+ "nombre": "Bloque C · Edificio de Ingeniería",
+ "semestre": "Segundo semestre 2026",
+ "fuente": "Transcrito de las fotos de los carteles de cada piso y de los horarios en las puertas (12/11/2026). La foto es la referencia oficial.",
+ "niveles": [
+  {
+   "id": "s2",
+   "nombre": "Subsuelo 2",
+   "piso": -2,
+   "contenido": [
+    "Laboratorio de Ingeniería Ambiental",
+    "Laboratorio de Estructuras",
+    "Maestranza",
+    "Laboratorio de Hormigón y Pavimentos"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-s2.jpg"
+  },
+  {
+   "id": "s1",
+   "nombre": "Subsuelo 1",
+   "piso": -1,
+   "contenido": [
+    "Sala de Docentes",
+    "Laboratorio de Hidráulica y Sanitaria",
+    "Laboratorio de Procesos de Separación",
+    "Laboratorio de Operaciones Unitarias",
+    "Laboratorio de Geotecnia"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-s1.jpg"
+  },
+  {
+   "id": "pb",
+   "nombre": "Planta Baja",
+   "piso": 0,
+   "contenido": [
+    "Aulas TEAL A, B, C y D",
+    "Laboratorio de Computación Aplicada",
+    "Recepción"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-pb.jpg"
+  },
+  {
+   "id": "p1",
+   "nombre": "Piso 1",
+   "piso": 1,
+   "contenido": [
+    "Laboratorio de Prototipado",
+    "Laboratorios de Computación A, B, C, D y E"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-p1.jpg"
+  },
+  {
+   "id": "p2",
+   "nombre": "Piso 2",
+   "piso": 2,
+   "contenido": [
+    "Laboratorio de Robótica y Automatización",
+    "Laboratorio de Sistemas Embebidos",
+    "Laboratorio de Circuitos Electrónicos",
+    "Laboratorio de Sistemas de Producción"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-p2.jpg"
+  },
+  {
+   "id": "p3",
+   "nombre": "Piso 3",
+   "piso": 3,
+   "contenido": [
+    "Laboratorio de Investigación Aplicada",
+    "Laboratorio de Biomédica",
+    "Laboratorio de Bioquímica y Bioprocesos",
+    "Laboratorio de Química – Ciencias Básicas"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-p3.jpg"
+  },
+  {
+   "id": "p4",
+   "nombre": "Piso 4",
+   "piso": 4,
+   "contenido": [
+    "Laboratorio de Telecomunicaciones",
+    "Laboratorio de Física – Ciencias Básicas",
+    "Laboratorio de Análisis Instrumental",
+    "Laboratorio de Ciencias de los Materiales",
+    "Laboratorio de Síntesis Química"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-p4.jpg"
+  },
+  {
+   "id": "terraza",
+   "nombre": "Terraza",
+   "piso": 5,
+   "contenido": [
+    "Terraza"
+   ],
+   "croquis": "/interiores/bloque-c/croquis-terraza.jpg"
+  }
+ ],
+ "aulas": [
+  {
+   "codigo": "C-001",
+   "nivel": "pb",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 45,
+   "foto": "/interiores/bloque-c/horario-c-001.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-247",
+     "paralelo": "1",
+     "materia": "Instrumentación Industrial",
+     "docente": "Freddy Fernando Ferrufino Gutierrez"
+    },
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-121",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IMT-221",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos II",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-260",
+     "paralelo": "2",
+     "materia": "Metodología de la Investigación",
+     "docente": "Freddy Angel Soria Cespedes"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "IND-335",
+     "paralelo": "2",
+     "materia": "Preparación y Evaluación de Proyectos para Ingeniería",
+     "docente": "S. L. L. Santillan Butron"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IND-335",
+     "paralelo": "2",
+     "materia": "Preparación y Evaluación de Proyectos para Ingeniería",
+     "docente": "S. L. L. Santillan Butron"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "ADM-321",
+     "paralelo": "2",
+     "materia": "Taller de Habilidades Blandas",
+     "docente": "Cinthya Andrea Velasco Arze"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-243",
+     "paralelo": "1",
+     "materia": "Fundamentos de Control",
+     "docente": "Jaime Ricardo Peña Montaño"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "DER-132",
+     "paralelo": "2",
+     "materia": "Pluralismo Jurídico",
+     "docente": "Marcelo Fernandez Osco"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "INB-334",
+     "paralelo": "1",
+     "materia": "Órganos Artificiales, Prótesis y Exoesqueletos",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    },
+    {
+     "dia": 2,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "TEL-312",
+     "paralelo": "1",
+     "materia": "Sistemas de Gestión de Telecomunicaciones",
+     "docente": "Victor Hugo Zalles Auchen"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "TEL-315",
+     "paralelo": "1",
+     "materia": "Sistemas de Comunicaciones Móviles e Inalámbricas",
+     "docente": "Jose Felix Campero Bustillos"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "TEL-313",
+     "paralelo": "1",
+     "materia": "Sistemas de Servicios Convergentes",
+     "docente": "Mauricio Horacio Aliaga Villacorta"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "TEL-313",
+     "paralelo": "1",
+     "materia": "Sistemas de Servicios Convergentes",
+     "docente": "M. H. Aliaga Villacorta"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-111",
+     "paralelo": "2",
+     "materia": "Tecnología de Materiales y Fabricación",
+     "docente": "Luis Ramiro Arce Salcedo"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IMT-111",
+     "paralelo": "1",
+     "materia": "Tecnología de Materiales y Fabricación",
+     "docente": "Diego Cesar Calderon Iturricha"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IIE-112",
+     "paralelo": "1",
+     "materia": "Gestión de la Innovación Empresarial II",
+     "docente": "Guido Jines Davila"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-361",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-114",
+     "paralelo": "1",
+     "materia": "Electricidad Industrial",
+     "docente": "Ramiro Edwin Manzaneda Veizaga"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-341",
+     "paralelo": "1",
+     "materia": "Control II",
+     "docente": "Javier Alexis Andrade Romero"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "INB-231",
+     "paralelo": "1",
+     "materia": "Radiaciones y Radioprotección",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "QMC-131",
+     "paralelo": "1",
+     "materia": "Química Física y Laboratorio",
+     "docente": "Diego Mateo Saleg Rodriguez"
+    },
+    {
+     "dia": 4,
+     "inicio": "13:15",
+     "fin": "14:00",
+     "sigla": "TEL-312",
+     "paralelo": "1",
+     "materia": "Sistemas de Gestión de Telecomunicaciones",
+     "docente": "Victor Hugo Zalles Auchen"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "TEL-312",
+     "paralelo": "1",
+     "materia": "Sistemas de Gestión de Telecomunicaciones",
+     "docente": "Victor Hugo Zalles Auchen"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "TEL-315",
+     "paralelo": "1",
+     "materia": "Sistemas de Comunicaciones Móviles e Inalámbricas",
+     "docente": "Jose Felix Campero Bustillos"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-353",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IMT-345",
+     "paralelo": "2",
+     "materia": "Autotrónica",
+     "docente": "Rodrigo Ruben Botelho Oblitas"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "CIV-110",
+     "paralelo": "1",
+     "materia": "Topografía",
+     "docente": "Jose Luis Gomez Reintsch"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:00",
+     "sigla": "CIV-110",
+     "paralelo": "1",
+     "materia": "Topografía",
+     "docente": "Jose Luis Gomez Reintsch"
+    },
+    {
+     "dia": 5,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMT-121",
+     "paralelo": "3",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "Roberto Vidal Poma Joaniquina"
+    }
+   ]
+  },
+  {
+   "codigo": "C-002",
+   "nivel": "pb",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 45,
+   "foto": "/interiores/bloque-c/horario-c-002.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-335",
+     "paralelo": "1",
+     "materia": "Preparación y Evaluación de Proyectos para Ingeniería",
+     "docente": "Ivan Antonio Irazoque Tobias"
+    },
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-210",
+     "paralelo": "1",
+     "materia": "Termodinámica y Laboratorio",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-211",
+     "paralelo": "1",
+     "materia": "Procesos Unitarios y Laboratorio",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-223",
+     "paralelo": "1",
+     "materia": "Ingeniería de Métodos y Laboratorio",
+     "docente": "Renan Alberto Laguna Vargas"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-223",
+     "paralelo": "1",
+     "materia": "Ingeniería de Métodos y Laboratorio",
+     "docente": "Renan Alberto Laguna Vargas"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "MKD-213",
+     "paralelo": "1",
+     "materia": "Creatividad Multimedia",
+     "docente": "Alejandra Selene Pinto Olivera"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-210",
+     "paralelo": "1",
+     "materia": "Termodinámica y Laboratorio",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 2,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IND-313",
+     "paralelo": "1",
+     "materia": "Innovación y Desarrollo de Productos",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 2,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-317",
+     "paralelo": "1",
+     "materia": "Tecnología de Alimentos y Laboratorio",
+     "docente": "Rafael Roberto Ruiz Morales"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-114",
+     "paralelo": "1",
+     "materia": "Electricidad Industrial",
+     "docente": "Ramiro Edwin Manzaneda Veizaga"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-260",
+     "paralelo": "3",
+     "materia": "Metodología de la Investigación",
+     "docente": "Omar Roberto Salinas Villafañe"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMA-331",
+     "paralelo": "1",
+     "materia": "Instrumentos de Regulación Ambiental",
+     "docente": "Ronald Max Perez Gutierrez"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-211",
+     "paralelo": "1",
+     "materia": "Procesos Unitarios y Laboratorio",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-211",
+     "paralelo": "1",
+     "materia": "Procesos Unitarios y Laboratorio",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IND-223",
+     "paralelo": "1",
+     "materia": "Ingeniería de Métodos y Laboratorio",
+     "docente": "Renan Alberto Laguna Vargas"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMU-313",
+     "paralelo": "1",
+     "materia": "Taller de Refuerzo Sonoro y Proyectos Acústicos",
+     "docente": "Rodrigo Choque Oropeza"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "IND-332",
+     "paralelo": "1",
+     "materia": "Gestión del Talento Humano y Habilidades",
+     "docente": "V. G. Rabaza Valverde"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IND-332",
+     "paralelo": "1",
+     "materia": "Gestión del Talento Humano y Habilidades",
+     "docente": "V. G. Rabaza Valverde"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-210",
+     "paralelo": "1",
+     "materia": "Termodinámica y Laboratorio",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "COM-141",
+     "paralelo": "1",
+     "materia": "Redacción I",
+     "docente": "Monica Esther Navia Antezana"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IND-313",
+     "paralelo": "1",
+     "materia": "Innovación y Desarrollo de Productos",
+     "docente": "Fanny Andrea Siles Ramirez"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-317",
+     "paralelo": "1",
+     "materia": "Tecnología de Alimentos y Laboratorio",
+     "docente": "Rafael Roberto Ruiz Morales"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-317",
+     "paralelo": "1",
+     "materia": "Tecnología de Alimentos y Laboratorio",
+     "docente": "Rafael Roberto Ruiz Morales"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMA-331",
+     "paralelo": "1",
+     "materia": "Instrumentos de Regulación Ambiental",
+     "docente": "Ronald Max Perez Gutierrez"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-260",
+     "paralelo": "1",
+     "materia": "Metodología de la Investigación",
+     "docente": "Marcelo Molina Silva"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-263",
+     "paralelo": "1",
+     "materia": "Taller de Ergonomía",
+     "docente": "Maria Cristina Rengel Roca"
+    },
+    {
+     "dia": 6,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "DGR-133",
+     "paralelo": "1",
+     "materia": "Bocetaje",
+     "docente": "Bruno Raul Rivera Catacora"
+    }
+   ]
+  },
+  {
+   "codigo": "C-003",
+   "nivel": "pb",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 45,
+   "foto": "/interiores/bloque-c/horario-c-003.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "CIV-235",
+     "paralelo": "1",
+     "materia": "Estructuras Hiperestáticas II",
+     "docente": "Marcelo Gonzalo Gutierrez Jines"
+    },
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "SIS-251",
+     "paralelo": "1",
+     "materia": "Ingeniería de Datos",
+     "docente": "Oswaldo Juan Figueroa Domejean"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-361",
+     "paralelo": "1",
+     "materia": "Práctica Pre Profesional",
+     "docente": "Lourdes Eulalia Peredo Quiroga"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "SIS-114",
+     "paralelo": "1",
+     "materia": "Programación para Ingeniería",
+     "docente": "Diego Mateo Saleg Rodriguez"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "CIV-362",
+     "paralelo": "1",
+     "materia": "Construcciones Civiles",
+     "docente": "Manuel Angel Guzman Herrera"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "SIS-325",
+     "paralelo": "1",
+     "materia": "Ética y Seguridad de Sistemas",
+     "docente": "Lourdes Eulalia Peredo Quiroga"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-122",
+     "paralelo": "1",
+     "materia": "Base de Datos I",
+     "docente": "Juan Angel Avila Maceda"
+    },
+    {
+     "dia": 2,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "CIV-230",
+     "paralelo": "1",
+     "materia": "Estructuras Isostáticas",
+     "docente": "Candida Yris Vasquez Torres"
+    },
+    {
+     "dia": 2,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "CIV-230",
+     "paralelo": "1",
+     "materia": "Estructuras Isostáticas",
+     "docente": "Candida Yris Vasquez Torres"
+    },
+    {
+     "dia": 2,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "SIS-226",
+     "paralelo": "1",
+     "materia": "Sistemas de Soporte a las Decisiones",
+     "docente": "D. C. Ovando Santander"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "SIS-226",
+     "paralelo": "1",
+     "materia": "Sistemas de Soporte a las Decisiones",
+     "docente": "D. C. Ovando Santander"
+    },
+    {
+     "dia": 3,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "CIV-341",
+     "paralelo": "1",
+     "materia": "Instalación en Edificios",
+     "docente": "J. L. de Grandchant Argandoña"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-111",
+     "paralelo": "2",
+     "materia": "Introducción a la Programación",
+     "docente": "Rosario Aracely Merlo Yujra"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "CIV-331",
+     "paralelo": "1",
+     "materia": "Estructuras de Hormigón Armado I",
+     "docente": "O. F. Zuleta Inch"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "SIS-225",
+     "paralelo": "1",
+     "materia": "Sistemas de Información",
+     "docente": "Adalid Irvin Yujra Ali"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-215",
+     "paralelo": "1",
+     "materia": "Procesos Industriales",
+     "docente": "Rafael Roberto Ruiz Morales"
+    },
+    {
+     "dia": 3,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "SIS-312",
+     "paralelo": "1",
+     "materia": "Gestión de Calidad de Sistemas",
+     "docente": "Jorge Gustavo Palabral Velarde"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "SIS-111",
+     "paralelo": "5",
+     "materia": "Introducción a la Programación",
+     "docente": "Jose Ignacio Rios Villanueva"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "DER-132",
+     "paralelo": "2",
+     "materia": "Pluralismo Jurídico",
+     "docente": "Marcelo Fernandez Osco"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-252",
+     "paralelo": "1",
+     "materia": "Inteligencia Artificial",
+     "docente": "Oswaldo Juan Figueroa Domejean"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "SIS-133",
+     "paralelo": "3",
+     "materia": "Arquitectura Computacional y Sistemas Operativos",
+     "docente": "Jacil Abdul Buezo Peña"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "DER-394",
+     "paralelo": "1",
+     "materia": "Derecho de las TIC",
+     "docente": "Lourdes Eulalia Peredo Quiroga"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "CIV-222",
+     "paralelo": "1",
+     "materia": "Materiales de Construcción",
+     "docente": "Angel Ramos Maita"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "CIV-372",
+     "paralelo": "1",
+     "materia": "Gestión de Proyectos",
+     "docente": "Jose Francisco Suarez Querejazu"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "SIS-311",
+     "paralelo": "1",
+     "materia": "Arquitectura de Software",
+     "docente": "Walter Ignacio Miranda Salazar"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "SIS-113",
+     "paralelo": "1",
+     "materia": "Programación II",
+     "docente": "Maria Lucero Yañez Guzman"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-215",
+     "paralelo": "1",
+     "materia": "Tecnologías Web II",
+     "docente": "Miguel Angel Pacheco Arteaga"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-215",
+     "paralelo": "1",
+     "materia": "Procesos Industriales",
+     "docente": "Rafael Roberto Ruiz Morales"
+    },
+    {
+     "dia": 5,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "IND-215",
+     "paralelo": "1",
+     "materia": "Procesos Industriales",
+     "docente": "R. R. Ruiz Morales"
+    },
+    {
+     "dia": 6,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "DGR-133",
+     "paralelo": "2",
+     "materia": "Bocetaje",
+     "docente": "Carlos Gustavo Laruta Bengolea"
+    }
+   ]
+  },
+  {
+   "codigo": "C-004",
+   "nivel": "pb",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 44,
+   "foto": "/interiores/bloque-c/horario-c-004.jpg",
+   "nota": "La foto de este horario tiene poca resolución: algunos nombres pueden tener errores. Ante la duda, revisa la foto.",
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "CIV-332",
+     "paralelo": "1",
+     "materia": "Fundaciones",
+     "docente": "Mauricio Gaston Prudencio Salcedo"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-224",
+     "paralelo": "1",
+     "materia": "Sistemas de Producción I",
+     "docente": "Gonzalo Ramiro Cespedes Tedesqui"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMU-213",
+     "paralelo": "1",
+     "materia": "Instrumentación e Instalaciones Acústicas",
+     "docente": "Andres Villegas Jorge"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "IND-332",
+     "paralelo": "1",
+     "materia": "Gestión del Talento Humano y Habilidades",
+     "docente": "V. G. Rabaza Valverde"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IND-332",
+     "paralelo": "1",
+     "materia": "Gestión del Talento Humano y Habilidades",
+     "docente": "V. G. Rabaza Valverde"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "ADM-321",
+     "paralelo": "1",
+     "materia": "Taller de Habilidades Blandas",
+     "docente": "Cinthya Andrea Velasco Arze"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IIE-112",
+     "paralelo": "1",
+     "materia": "Gestión de la Innovación Empresarial II",
+     "docente": "Guido Jines Davila"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-242",
+     "paralelo": "1",
+     "materia": "Control Estadístico de la Calidad",
+     "docente": "Franz Reynaldo Blatnik Paredes"
+    },
+    {
+     "dia": 2,
+     "inicio": "13:15",
+     "fin": "14:00",
+     "sigla": "CIV-321",
+     "paralelo": "1",
+     "materia": "Tecnología del Hormigón y Laboratorio",
+     "docente": "Angel Ramos Maita"
+    },
+    {
+     "dia": 2,
+     "inicio": "15:00",
+     "fin": "15:45",
+     "sigla": "INB-234",
+     "paralelo": "1",
+     "materia": "Redes de Comunicación en Bioingeniería",
+     "docente": "Rudy Ariel Guarez Villegas"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "INB-234",
+     "paralelo": "1",
+     "materia": "Redes de Comunicación en Bioingeniería",
+     "docente": "Rudy Ariel Guarez Villegas"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-227",
+     "paralelo": "1",
+     "materia": "Mejora Continua y Gestión de la Calidad",
+     "docente": "Jasiel Jimena Sanjines Calatayud"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "INB-335",
+     "paralelo": "1",
+     "materia": "Gestión Hospitalaria",
+     "docente": "Roly Renato de la Cruz Mamani"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-243",
+     "paralelo": "2",
+     "materia": "Seguridad y Salud Ocupacional",
+     "docente": "Maria Cristina Rengel Roca"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-224",
+     "paralelo": "1",
+     "materia": "Sistemas de Producción I",
+     "docente": "Gonzalo Ramiro Cespedes Tedesqui"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "PSI-707",
+     "paralelo": "1",
+     "materia": "Proyectos Sociales y Comunitarios",
+     "docente": "Daniela Elizabeth Riveros Riveros"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMU-213",
+     "paralelo": "1",
+     "materia": "Instrumentación e Instalaciones Acústicas",
+     "docente": "Andres Villegas Jorge"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "IMU-213",
+     "paralelo": "1",
+     "materia": "Instrumentación e Instalaciones Acústicas",
+     "docente": "Andres Villegas Jorge"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "INB-211",
+     "paralelo": "1",
+     "materia": "Biología Celular y Molecular",
+     "docente": "G. A. Chavez Lizarraga"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "INB-211",
+     "paralelo": "1",
+     "materia": "Biología Celular y Molecular",
+     "docente": "G. A. Chavez Lizarraga"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "ADM-321",
+     "paralelo": "1",
+     "materia": "Taller de Habilidades Blandas",
+     "docente": "Cinthya Andrea Velasco Arze"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-352",
+     "paralelo": "1",
+     "materia": "Prácticas Preprofesionales",
+     "docente": "Diego Cesar Calderon Iturricha"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-242",
+     "paralelo": "1",
+     "materia": "Control Estadístico de la Calidad",
+     "docente": "Franz Reynaldo Blatnik Paredes"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "CIV-110",
+     "paralelo": "1",
+     "materia": "Topografía",
+     "docente": "Jose Luis Gomez Reintsch"
+    },
+    {
+     "dia": 4,
+     "inicio": "15:00",
+     "fin": "15:45",
+     "sigla": "INB-234",
+     "paralelo": "1",
+     "materia": "Redes de Comunicación en Bioingeniería",
+     "docente": "Rudy Ariel Guarez Villegas"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "INB-234",
+     "paralelo": "1",
+     "materia": "Redes de Comunicación en Bioingeniería",
+     "docente": "Rudy Ariel Guarez Villegas"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-227",
+     "paralelo": "1",
+     "materia": "Mejora Continua y Gestión de la Calidad",
+     "docente": "Jasiel Jimena Sanjines Calatayud"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "ADM-321",
+     "paralelo": "2",
+     "materia": "Taller de Habilidades Blandas",
+     "docente": "Cinthya Andrea Velasco Arze"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-243",
+     "paralelo": "2",
+     "materia": "Seguridad y Salud Ocupacional",
+     "docente": "Maria Cristina Rengel Roca"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "PSI-707",
+     "paralelo": "1",
+     "materia": "Proyectos Sociales y Comunitarios",
+     "docente": "Daniela Elizabeth Riveros Riveros"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-361",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    }
+   ]
+  },
+  {
+   "codigo": "C-102",
+   "nivel": "p1",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 36,
+   "foto": "/interiores/bloque-c/horario-c-102.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "COM-142",
+     "paralelo": "1",
+     "materia": "Redacción II",
+     "docente": "Monica Esther Navia Antezana"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "ICO-221",
+     "paralelo": "1",
+     "materia": "Finanzas I",
+     "docente": "Alvaro Sergio Vasquez Salazar"
+    },
+    {
+     "dia": 1,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "COM-112",
+     "paralelo": "1",
+     "materia": "Producción de Noticias I",
+     "docente": "Juan Eduardo Araos Chaparro"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMT-312",
+     "paralelo": "1",
+     "materia": "Manufactura Integrada",
+     "docente": "Diego Cesar Calderon Iturricha"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMT-212",
+     "paralelo": "1",
+     "materia": "Diseño de Máquinas",
+     "docente": "Fabiam Rolando Rivas Barrientos"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IMT-212",
+     "paralelo": "1",
+     "materia": "Diseño de Máquinas",
+     "docente": "F. R. Rivas Barrientos"
+    },
+    {
+     "dia": 1,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-131",
+     "paralelo": "1",
+     "materia": "Programación Superior",
+     "docente": "X. A. Murillo Sanchez"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-131",
+     "paralelo": "1",
+     "materia": "Programación Superior",
+     "docente": "Xavier Alexis Murillo Sanchez"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-112",
+     "paralelo": "1",
+     "materia": "Mecanismos y Elementos de Máquina",
+     "docente": "G. M. de Grandchant Riveros"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "09:45",
+     "sigla": "IMT-112",
+     "paralelo": "1",
+     "materia": "Mecanismos y Elementos de Máquina",
+     "docente": "G. M. de Grandchant Riveros"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:45",
+     "fin": "10:30",
+     "sigla": "IMT-142",
+     "paralelo": "1",
+     "materia": "Neumática e Hidráulica",
+     "docente": "D. C. Calderon Iturricha"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IMT-142",
+     "paralelo": "1",
+     "materia": "Neumática e Hidráulica",
+     "docente": "Diego Cesar Calderon Iturricha"
+    },
+    {
+     "dia": 2,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMU-343",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Elias Ruben Calizaya Mamani"
+    },
+    {
+     "dia": 2,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMU-343",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Elias Ruben Calizaya Mamani"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMU-324",
+     "paralelo": "1",
+     "materia": "Taller de Proyectos Interactivos",
+     "docente": "Marcelo Pinto Macedo"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IMU-324",
+     "paralelo": "1",
+     "materia": "Taller de Proyectos Interactivos",
+     "docente": "Marcelo Pinto Macedo"
+    },
+    {
+     "dia": 2,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMU-332",
+     "paralelo": "1",
+     "materia": "Producción y Distribución de Contenido Multimedia",
+     "docente": "Ivan Hermes Layme Perez"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "IMU-332",
+     "paralelo": "1",
+     "materia": "Producción y Distribución de Contenido Multimedia",
+     "docente": "Ivan Hermes Layme Perez"
+    },
+    {
+     "dia": 3,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-131",
+     "paralelo": "2",
+     "materia": "Programación Superior",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-211",
+     "paralelo": "1",
+     "materia": "Cad, Cae y Prototipado",
+     "docente": "Ricardo Ivan Fernandez Hinojosa"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "IMT-211",
+     "paralelo": "1",
+     "materia": "Cad, Cae y Prototipado",
+     "docente": "R. I. Fernandez Hinojosa"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMT-313",
+     "paralelo": "1",
+     "materia": "Diseño Superior de Ingeniería",
+     "docente": "G. M. de Grandchant Riveros"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMT-342",
+     "paralelo": "1",
+     "materia": "Robótica",
+     "docente": "Carlos Daniel Aguilar Mancachi"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-141",
+     "paralelo": "1",
+     "materia": "Introducción a la Ingeniería Mecatrónica",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "09:45",
+     "sigla": "IMT-141",
+     "paralelo": "1",
+     "materia": "Introducción a la Ingeniería Mecatrónica",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IQM-233",
+     "paralelo": "1",
+     "materia": "Procesos de Separación I y Laboratorio",
+     "docente": "Marcelo Antonio Gorritty Portillo"
+    },
+    {
+     "dia": 4,
+     "inicio": "13:15",
+     "fin": "14:00",
+     "sigla": "IMT-241",
+     "paralelo": "2",
+     "materia": "Señales y Sistemas",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:00",
+     "sigla": "IMT-241",
+     "paralelo": "2",
+     "materia": "Señales y Sistemas",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMU-324",
+     "paralelo": "1",
+     "materia": "Taller de Proyectos Interactivos",
+     "docente": "Marcelo Pinto Macedo"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IMU-332",
+     "paralelo": "1",
+     "materia": "Producción y Distribución de Contenido Multimedia",
+     "docente": "Ivan Hermes Layme Perez"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "IMU-332",
+     "paralelo": "1",
+     "materia": "Producción y Distribución de Contenido Multimedia",
+     "docente": "Ivan Hermes Layme Perez"
+    },
+    {
+     "dia": 5,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-131",
+     "paralelo": "2",
+     "materia": "Programación Superior",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "09:45",
+     "sigla": "IMT-131",
+     "paralelo": "2",
+     "materia": "Programación Superior",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "CDM-221",
+     "paralelo": "1",
+     "materia": "Inteligencia Artificial en Comunicación",
+     "docente": "Sergio Alejandro Calderon Machicado"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMT-313",
+     "paralelo": "1",
+     "materia": "Diseño Superior de Ingeniería",
+     "docente": "G. M. de Grandchant Riveros"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:00",
+     "sigla": "IMT-313",
+     "paralelo": "1",
+     "materia": "Diseño Superior de Ingeniería",
+     "docente": "G. M. de Grandchant Riveros"
+    },
+    {
+     "dia": 5,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IMT-131",
+     "paralelo": "1",
+     "materia": "Programación Superior",
+     "docente": "Xavier Alexis Murillo Sanchez"
+    }
+   ]
+  },
+  {
+   "codigo": "C-103",
+   "nivel": "p1",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 36,
+   "foto": "/interiores/bloque-c/horario-c-103.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IBB-255",
+     "paralelo": "1",
+     "materia": "Diseño de Biorreactores y Laboratorio",
+     "docente": "Lenny Alejandra Cabrera Aguilar"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "COM-141",
+     "paralelo": "1",
+     "materia": "Redacción I",
+     "docente": "Monica Esther Navia Antezana"
+    },
+    {
+     "dia": 1,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "CDM-111",
+     "paralelo": "1",
+     "materia": "Storytelling Digital",
+     "docente": "Rodolfo Hualpa Condori"
+    },
+    {
+     "dia": 1,
+     "inicio": "15:00",
+     "fin": "15:45",
+     "sigla": "INB-235",
+     "paralelo": "1",
+     "materia": "Imagenología Médica",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "INB-235",
+     "paralelo": "1",
+     "materia": "Imagenología Médica",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-342",
+     "paralelo": "2",
+     "materia": "Robótica",
+     "docente": "Carlos Daniel Aguilar Mancachi"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-343",
+     "paralelo": "1",
+     "materia": "Automatización Industrial",
+     "docente": "Alexandro Montes Alvarez"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IMT-241",
+     "paralelo": "1",
+     "materia": "Señales y Sistemas",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "ADM-254",
+     "paralelo": "1",
+     "materia": "Taller de Innovación Digital",
+     "docente": "Fernando Valentin Palacios Sanchez"
+    },
+    {
+     "dia": 3,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-335",
+     "paralelo": "1",
+     "materia": "Preparación y Evaluación de Proyectos para Ingeniería",
+     "docente": "Ivan Antonio Irazoque Tobias"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "MKD-313",
+     "paralelo": "1",
+     "materia": "Medición y Analítica Digital",
+     "docente": "Roberto Jesus Sanchez Oropeza"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "CDM-111",
+     "paralelo": "1",
+     "materia": "Storytelling Digital",
+     "docente": "Rodolfo Hualpa Condori"
+    },
+    {
+     "dia": 3,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-245",
+     "paralelo": "2",
+     "materia": "Control I",
+     "docente": "Juan Carlos Velasquez Duran"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-243",
+     "paralelo": "1",
+     "materia": "Fundamentos de Control",
+     "docente": "Jaime Ricardo Peña Montaño"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "SIS-111",
+     "paralelo": "1",
+     "materia": "Introducción a la Programación",
+     "docente": "Maria Lucero Yañez Guzman"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "SIS-111",
+     "paralelo": "1",
+     "materia": "Introducción a la Programación",
+     "docente": "Maria Lucero Yañez Guzman"
+    },
+    {
+     "dia": 4,
+     "inicio": "11:30",
+     "fin": "12:15",
+     "sigla": "SIS-123",
+     "paralelo": "1",
+     "materia": "Ingeniería de Sistemas",
+     "docente": "Rosario Aracely Merlo Yujra"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "SIS-123",
+     "paralelo": "1",
+     "materia": "Ingeniería de Sistemas",
+     "docente": "Rosario Aracely Merlo Yujra"
+    },
+    {
+     "dia": 4,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-123",
+     "paralelo": "2",
+     "materia": "Circuitos Digitales",
+     "docente": "Wilder Orellana Lopez"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-123",
+     "paralelo": "2",
+     "materia": "Circuitos Digitales",
+     "docente": "Wilder Orellana Lopez"
+    },
+    {
+     "dia": 5,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "MKD-112",
+     "paralelo": "1",
+     "materia": "Comunicación Digital y Social Media",
+     "docente": "Alejandra Selene Pinto Olivera"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "MKD-313",
+     "paralelo": "1",
+     "materia": "Medición y Analítica Digital",
+     "docente": "Roberto Jesus Sanchez Oropeza"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-113",
+     "paralelo": "2",
+     "materia": "Programación II",
+     "docente": "Adalid Irvin Yujra Ali"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "SIS-113",
+     "paralelo": "2",
+     "materia": "Programación II",
+     "docente": "Adalid Irvin Yujra Ali"
+    },
+    {
+     "dia": 5,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-322",
+     "paralelo": "1",
+     "materia": "Sistemas Embebidos II",
+     "docente": "Xavier Alexis Murillo Sanchez"
+    }
+   ]
+  },
+  {
+   "codigo": "C-104",
+   "nivel": "p1",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 36,
+   "foto": "/interiores/bloque-c/horario-c-104.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-141",
+     "paralelo": "1",
+     "materia": "Introducción a la Ingeniería Mecatrónica",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "09:45",
+     "sigla": "IMT-141",
+     "paralelo": "1",
+     "materia": "Introducción a la Ingeniería Mecatrónica",
+     "docente": "G. E. Manning Soria Galvarro"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-112",
+     "paralelo": "2",
+     "materia": "Programación I",
+     "docente": "Juan Angel Avila Maceda"
+    },
+    {
+     "dia": 1,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "SIS-112",
+     "paralelo": "2",
+     "materia": "Programación I",
+     "docente": "Juan Angel Avila Maceda"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "SIS-225",
+     "paralelo": "1",
+     "materia": "Sistemas de Información",
+     "docente": "Adalid Irvin Yujra Ali"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "SIS-225",
+     "paralelo": "1",
+     "materia": "Sistemas de Información",
+     "docente": "Adalid Irvin Yujra Ali"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-232",
+     "paralelo": "1",
+     "materia": "Ingeniería de la Información",
+     "docente": "Diego Parraga Menchaca"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "SIS-352",
+     "paralelo": "1",
+     "materia": "Taller de Sistemas Inteligentes",
+     "docente": "Ovidio Roger Paton Gutierrez"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-242",
+     "paralelo": "1",
+     "materia": "Máquinas Eléctricas",
+     "docente": "Alexandro Montes Alvarez"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-211",
+     "paralelo": "1",
+     "materia": "Cad, Cae y Prototipado",
+     "docente": "Ricardo Ivan Fernandez Hinojosa"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-111",
+     "paralelo": "1",
+     "materia": "Introducción al Diseño Industrial",
+     "docente": "Jorge Enrique Mercado Nogales"
+    },
+    {
+     "dia": 2,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-237",
+     "paralelo": "1",
+     "materia": "Ingeniería Económica",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-211",
+     "paralelo": "2",
+     "materia": "Estructuras de Datos",
+     "docente": "Pamela Shirley Valenzuela Fernandez"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "SIS-211",
+     "paralelo": "2",
+     "materia": "Estructuras de Datos",
+     "docente": "P. S. Valenzuela Fernandez"
+    },
+    {
+     "dia": 3,
+     "inicio": "13:15",
+     "fin": "14:00",
+     "sigla": "SIS-114",
+     "paralelo": "1",
+     "materia": "Programación para Ingeniería",
+     "docente": "D. M. Saleg Rodriguez"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "SIS-114",
+     "paralelo": "1",
+     "materia": "Programación para Ingeniería",
+     "docente": "Diego Mateo Saleg Rodriguez"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-111",
+     "paralelo": "1",
+     "materia": "Introducción al Diseño Industrial",
+     "docente": "Jorge Enrique Mercado Nogales"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-232",
+     "paralelo": "1",
+     "materia": "Ingeniería de la Información",
+     "docente": "Diego Parraga Menchaca"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "SIS-325",
+     "paralelo": "1",
+     "materia": "Ética y Seguridad de Sistemas",
+     "docente": "Lourdes Eulalia Peredo Quiroga"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "SIS-325",
+     "paralelo": "1",
+     "materia": "Ética y Seguridad de Sistemas",
+     "docente": "L. E. Peredo Quiroga"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-237",
+     "paralelo": "1",
+     "materia": "Ingeniería Económica",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "SIS-352",
+     "paralelo": "1",
+     "materia": "Taller de Sistemas Inteligentes",
+     "docente": "Ovidio Roger Paton Gutierrez"
+    },
+    {
+     "dia": 5,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "ADM-265",
+     "paralelo": "1",
+     "materia": "Gestión de Procesos",
+     "docente": "Franz Ivan Rojas Peñaloza"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-212",
+     "paralelo": "1",
+     "materia": "Automatización e Instrumentación Industrial",
+     "docente": "Boris Ramirez Chumacero"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-212",
+     "paralelo": "1",
+     "materia": "Automatización e Instrumentación Industrial",
+     "docente": "Boris Ramirez Chumacero"
+    },
+    {
+     "dia": 5,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "CIV-211",
+     "paralelo": "1",
+     "materia": "Elementos Finitos",
+     "docente": "Ernesto Abraham Guzman Montalvo"
+    },
+    {
+     "dia": 5,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "CIV-211",
+     "paralelo": "1",
+     "materia": "Elementos Finitos",
+     "docente": "E. A. Guzman Montalvo"
+    }
+   ]
+  },
+  {
+   "codigo": "C-105",
+   "nivel": "p1",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 36,
+   "foto": "/interiores/bloque-c/horario-c-105.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "ICO-222",
+     "paralelo": "2",
+     "materia": "Finanzas II",
+     "docente": "Gabriela Ergueta Vildozo"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "CDM-221",
+     "paralelo": "1",
+     "materia": "Inteligencia Artificial en Comunicación",
+     "docente": "Sergio Alejandro Calderon Machicado"
+    },
+    {
+     "dia": 1,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IND-322",
+     "paralelo": "1",
+     "materia": "Logística y Distribución",
+     "docente": "Mauricio Garcia Soria Galvarro"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMT-123",
+     "paralelo": "1",
+     "materia": "Circuitos Digitales",
+     "docente": "Roberto Vidal Poma Joaniquina"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IMT-123",
+     "paralelo": "1",
+     "materia": "Circuitos Digitales",
+     "docente": "R. V. Poma Joaniquina"
+    },
+    {
+     "dia": 1,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-341",
+     "paralelo": "1",
+     "materia": "Control II",
+     "docente": "J. A. Andrade Romero"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-341",
+     "paralelo": "1",
+     "materia": "Control II",
+     "docente": "Javier Alexis Andrade Romero"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-231",
+     "paralelo": "1",
+     "materia": "Contabilidad y Costos Industriales",
+     "docente": "Alex Roberto Morales Meneses"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-228",
+     "paralelo": "1",
+     "materia": "Simulación y Optimización Industrial",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "SIS-331",
+     "paralelo": "1",
+     "materia": "Computación en la Nube",
+     "docente": "J. J. S. Miranda Mendoza"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "SIS-331",
+     "paralelo": "1",
+     "materia": "Computación en la Nube",
+     "docente": "J. J. S. Miranda Mendoza"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IQM-331",
+     "paralelo": "1",
+     "materia": "Cinética y Reactores Homogéneos y Laboratorio",
+     "docente": "Marcelo Antonio Gorritty Portillo"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "COM-112",
+     "paralelo": "1",
+     "materia": "Producción de Noticias I",
+     "docente": "Juan Eduardo Araos Chaparro"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IND-322",
+     "paralelo": "1",
+     "materia": "Logística y Distribución",
+     "docente": "Mauricio Garcia Soria Galvarro"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "CIV-211",
+     "paralelo": "1",
+     "materia": "Elementos Finitos",
+     "docente": "Ernesto Abraham Guzman Montalvo"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "CPA-336",
+     "paralelo": "1",
+     "materia": "Auditoría de Sistemas de Información",
+     "docente": "Juan Carlos Lea Plaza Lopez"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "ADM-268",
+     "paralelo": "1",
+     "materia": "Ciencia de Datos y Toma de Decisiones",
+     "docente": "Samuel Ivan Villarreal Salinas"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-231",
+     "paralelo": "1",
+     "materia": "Contabilidad y Costos Industriales",
+     "docente": "Alex Roberto Morales Meneses"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IND-228",
+     "paralelo": "1",
+     "materia": "Simulación y Optimización Industrial",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IQM-231",
+     "paralelo": "1",
+     "materia": "Mecánica de Fluidos y Laboratorio",
+     "docente": "Patricia Irma Velasquez Torrez"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IQM-221",
+     "paralelo": "1",
+     "materia": "Termodinámica Química y Laboratorio",
+     "docente": "Patricia Irma Velasquez Torrez"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "CPA-336",
+     "paralelo": "1",
+     "materia": "Auditoría de Sistemas de Información",
+     "docente": "Juan Carlos Lea Plaza Lopez"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IND-260",
+     "paralelo": "3",
+     "materia": "Metodología de la Investigación",
+     "docente": "Omar Roberto Salinas Villafañe"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IIE-261",
+     "paralelo": "1",
+     "materia": "Gestión del Conocimiento – Inteligencia Artificial",
+     "docente": "Efrain Zenon Salinas Sanchez"
+    },
+    {
+     "dia": 5,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-231",
+     "paralelo": "1",
+     "materia": "Contabilidad y Costos Industriales",
+     "docente": "Alex Roberto Morales Meneses"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "COM-242",
+     "paralelo": "1",
+     "materia": "Crónica",
+     "docente": "Angela Liliana Carrillo Valenzuela"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "COM-112",
+     "paralelo": "1",
+     "materia": "Producción de Noticias I",
+     "docente": "Juan Eduardo Araos Chaparro"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "ECO-211",
+     "paralelo": "1",
+     "materia": "Econometría",
+     "docente": "Pavel Horacio Villegas Quino"
+    },
+    {
+     "dia": 5,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "CIV-141",
+     "paralelo": "1",
+     "materia": "Hidrología",
+     "docente": "Arpad Luis Gonzales Tomanyi"
+    }
+   ]
+  },
+  {
+   "codigo": "C-106",
+   "nivel": "p1",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 36,
+   "foto": "/interiores/bloque-c/horario-c-106.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-344",
+     "paralelo": "1",
+     "materia": "Visión Artificial",
+     "docente": "Gabriel Antonio Rojas Silva"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IQM-253",
+     "paralelo": "1",
+     "materia": "Ingeniería Bioquímica y Laboratorio",
+     "docente": "Lenny Alejandra Cabrera Aguilar"
+    },
+    {
+     "dia": 1,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "CDM-212",
+     "paralelo": "1",
+     "materia": "Redacción para Medios Digitales",
+     "docente": "Jose Luis Duran Paredes"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "SIS-234",
+     "paralelo": "1",
+     "materia": "Internet de las Cosas",
+     "docente": "Pamela Shirley Valenzuela Fernandez"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "SIS-234",
+     "paralelo": "1",
+     "materia": "Internet de las Cosas",
+     "docente": "P. S. Valenzuela Fernandez"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IIE-300",
+     "paralelo": "1",
+     "materia": "Business Intelligence",
+     "docente": "Ovidio Roger Paton Gutierrez"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "ADM-266",
+     "paralelo": "2",
+     "materia": "Gerencia de Operaciones y Tecnología",
+     "docente": "Carla Lizett Kaune Sarabia"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-234",
+     "paralelo": "1",
+     "materia": "Ciencia de Datos para la Toma de Decisiones",
+     "docente": "Diego Parraga Menchaca"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "CPA-224",
+     "paralelo": "1",
+     "materia": "Costos II",
+     "docente": "Alex Roberto Morales Meneses"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-239",
+     "paralelo": "1",
+     "materia": "Ingeniería Financiera",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IIE-300",
+     "paralelo": "1",
+     "materia": "Business Intelligence",
+     "docente": "Ovidio Roger Paton Gutierrez"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IIE-261",
+     "paralelo": "1",
+     "materia": "Gestión del Conocimiento – Inteligencia Artificial",
+     "docente": "Efrain Zenon Salinas Sanchez"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IQM-332",
+     "paralelo": "1",
+     "materia": "Diseño de Reactores Heterogéneos y Laboratorio",
+     "docente": "Patricia Irma Velasquez Torrez"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "SIS-251",
+     "paralelo": "1",
+     "materia": "Ingeniería de Datos",
+     "docente": "Oswaldo Juan Figueroa Domejean"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "SIS-251",
+     "paralelo": "1",
+     "materia": "Ingeniería de Datos",
+     "docente": "O. J. Figueroa Domejean"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IND-112",
+     "paralelo": "1",
+     "materia": "Manufactura y Mecanizado",
+     "docente": "Boris Ramirez Chumacero"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "IND-335",
+     "paralelo": "2",
+     "materia": "Preparación y Evaluación de Proyectos para Ingeniería",
+     "docente": "S. L. L. Santillan Butron"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IND-335",
+     "paralelo": "2",
+     "materia": "Preparación y Evaluación de Proyectos para Ingeniería",
+     "docente": "S. L. L. Santillan Butron"
+    },
+    {
+     "dia": 3,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "PSI-310",
+     "paralelo": "1",
+     "materia": "Psicoestadística",
+     "docente": "A. L. Chirino Gutierrez"
+    },
+    {
+     "dia": 3,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "PSI-310",
+     "paralelo": "1",
+     "materia": "Psicoestadística",
+     "docente": "A. L. Chirino Gutierrez"
+    },
+    {
+     "dia": 4,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-234",
+     "paralelo": "1",
+     "materia": "Ciencia de Datos para la Toma de Decisiones",
+     "docente": "Diego Parraga Menchaca"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "INB-235",
+     "paralelo": "1",
+     "materia": "Imagenología Médica",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IND-239",
+     "paralelo": "1",
+     "materia": "Ingeniería Financiera",
+     "docente": "Fernando Amado Lopez Gutierrez"
+    },
+    {
+     "dia": 4,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "ICO-313",
+     "paralelo": "1",
+     "materia": "Marketing Digital",
+     "docente": "Jaime Jimmy Espejo Cerrudo"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "SIS-331",
+     "paralelo": "1",
+     "materia": "Computación en la Nube",
+     "docente": "Juan Jose Santos Miranda Mendoza"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "SIS-331",
+     "paralelo": "1",
+     "materia": "Computación en la Nube",
+     "docente": "J. J. S. Miranda Mendoza"
+    },
+    {
+     "dia": 4,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-322",
+     "paralelo": "1",
+     "materia": "Sistemas Embebidos II",
+     "docente": "X. A. Murillo Sanchez"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-322",
+     "paralelo": "1",
+     "materia": "Sistemas Embebidos II",
+     "docente": "Xavier Alexis Murillo Sanchez"
+    },
+    {
+     "dia": 5,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IND-112",
+     "paralelo": "2",
+     "materia": "Manufactura y Mecanizado",
+     "docente": "Jorge Enrique Mercado Nogales"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "SIS-111",
+     "paralelo": "2",
+     "materia": "Introducción a la Programación",
+     "docente": "Rosario Aracely Merlo Yujra"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "SIS-111",
+     "paralelo": "2",
+     "materia": "Introducción a la Programación",
+     "docente": "Rosario Aracely Merlo Yujra"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IND-112",
+     "paralelo": "1",
+     "materia": "Manufactura y Mecanizado",
+     "docente": "Boris Ramirez Chumacero"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "SIS-221",
+     "paralelo": "2",
+     "materia": "Base de Datos II",
+     "docente": "Henry Luis Miranda Ordoñez"
+    },
+    {
+     "dia": 5,
+     "inicio": "16:00",
+     "fin": "16:45",
+     "sigla": "SIS-221",
+     "paralelo": "2",
+     "materia": "Base de Datos II",
+     "docente": "H. L. Miranda Ordoñez"
+    },
+    {
+     "dia": 5,
+     "inicio": "17:00",
+     "fin": "18:30",
+     "sigla": "IMT-245",
+     "paralelo": "1",
+     "materia": "Control I",
+     "docente": "Gabriel Antonio Rojas Silva"
+    }
+   ]
+  },
+  {
+   "codigo": "C-201",
+   "nivel": "p2",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 30,
+   "foto": "/interiores/bloque-c/horario-c-201.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-222",
+     "paralelo": "2",
+     "materia": "Sistemas Embebidos I",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "IMT-222",
+     "paralelo": "2",
+     "materia": "Sistemas Embebidos I",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 1,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMT-241",
+     "paralelo": "2",
+     "materia": "Señales y Sistemas",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 1,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IND-114",
+     "paralelo": "1",
+     "materia": "Electricidad Industrial",
+     "docente": "Ramiro Edwin Manzaneda Veizaga"
+    },
+    {
+     "dia": 1,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-242",
+     "paralelo": "1",
+     "materia": "Máquinas Eléctricas",
+     "docente": "Alexandro Montes Alvarez"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-242",
+     "paralelo": "1",
+     "materia": "Máquinas Eléctricas",
+     "docente": "Alexandro Montes Alvarez"
+    },
+    {
+     "dia": 2,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-247",
+     "paralelo": "1",
+     "materia": "Instrumentación Industrial",
+     "docente": "Freddy Fernando Ferrufino Gutierrez"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "09:45",
+     "sigla": "IMT-247",
+     "paralelo": "1",
+     "materia": "Instrumentación Industrial",
+     "docente": "F. F. Ferrufino Gutierrez"
+    },
+    {
+     "dia": 2,
+     "inicio": "11:30",
+     "fin": "12:15",
+     "sigla": "IMT-342",
+     "paralelo": "1",
+     "materia": "Robótica",
+     "docente": "C. D. Aguilar Mancachi"
+    },
+    {
+     "dia": 2,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMT-342",
+     "paralelo": "1",
+     "materia": "Robótica",
+     "docente": "Carlos Daniel Aguilar Mancachi"
+    },
+    {
+     "dia": 2,
+     "inicio": "15:00",
+     "fin": "15:45",
+     "sigla": "IMT-123",
+     "paralelo": "2",
+     "materia": "Circuitos Digitales",
+     "docente": "Wilder Orellana Lopez"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMT-123",
+     "paralelo": "2",
+     "materia": "Circuitos Digitales",
+     "docente": "Wilder Orellana Lopez"
+    },
+    {
+     "dia": 2,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-342",
+     "paralelo": "2",
+     "materia": "Robótica",
+     "docente": "C. D. Aguilar Mancachi"
+    },
+    {
+     "dia": 2,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-342",
+     "paralelo": "2",
+     "materia": "Robótica",
+     "docente": "Carlos Daniel Aguilar Mancachi"
+    },
+    {
+     "dia": 3,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "IMT-343",
+     "paralelo": "1",
+     "materia": "Automatización Industrial",
+     "docente": "Alexandro Montes Alvarez"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "09:45",
+     "sigla": "IMT-343",
+     "paralelo": "1",
+     "materia": "Automatización Industrial",
+     "docente": "Alexandro Montes Alvarez"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IQM-131",
+     "paralelo": "1",
+     "materia": "Balances de Masa y Energía",
+     "docente": "Andrea Gabriela Espinar Saavedra"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:00",
+     "fin": "19:15",
+     "sigla": "IMT-245",
+     "paralelo": "1",
+     "materia": "Control I",
+     "docente": "Gabriel Antonio Rojas Silva"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:45",
+     "fin": "17:30",
+     "sigla": "IMT-245",
+     "paralelo": "2",
+     "materia": "Control I",
+     "docente": "J. C. Velasquez Duran"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IMT-245",
+     "paralelo": "2",
+     "materia": "Control I",
+     "docente": "Juan Carlos Velasquez Duran"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-221",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos III",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "IMT-221",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos III",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMT-142",
+     "paralelo": "1",
+     "materia": "Neumática e Hidráulica",
+     "docente": "Diego Cesar Calderon Iturricha"
+    },
+    {
+     "dia": 5,
+     "inicio": "14:15",
+     "fin": "15:00",
+     "sigla": "IMT-142",
+     "paralelo": "1",
+     "materia": "Neumática e Hidráulica",
+     "docente": "D. C. Calderon Iturricha"
+    },
+    {
+     "dia": 5,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-246",
+     "paralelo": "1",
+     "materia": "Electrónica de Potencia",
+     "docente": "C. R. Tusco Zegarra"
+    },
+    {
+     "dia": 5,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-246",
+     "paralelo": "1",
+     "materia": "Electrónica de Potencia",
+     "docente": "Christian Ricardo Tusco Zegarra"
+    }
+   ]
+  },
+  {
+   "codigo": "C-202",
+   "nivel": "p2",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 28,
+   "foto": "/interiores/bloque-c/horario-c-202.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-241",
+     "paralelo": "1",
+     "materia": "Señales y Sistemas",
+     "docente": "D. R. H. Calderon Rocabado"
+    },
+    {
+     "dia": 1,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IMT-222",
+     "paralelo": "1",
+     "materia": "Sistemas Embebidos I",
+     "docente": "Andres Leonardo Gutierrez Rocha"
+    },
+    {
+     "dia": 1,
+     "inicio": "19:30",
+     "fin": "20:15",
+     "sigla": "IMT-222",
+     "paralelo": "1",
+     "materia": "Sistemas Embebidos I",
+     "docente": "A. L. Gutierrez Rocha"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:45",
+     "fin": "10:30",
+     "sigla": "IMT-222",
+     "paralelo": "2",
+     "materia": "Sistemas Embebidos I",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "IMT-222",
+     "paralelo": "2",
+     "materia": "Sistemas Embebidos I",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 2,
+     "inicio": "13:15",
+     "fin": "14:00",
+     "sigla": "IMT-221",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos II",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 2,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "IMT-221",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos II",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": "IMT-222",
+     "paralelo": "1",
+     "materia": "Sistemas Embebidos I",
+     "docente": "Andres Leonardo Gutierrez Rocha"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "IMT-121",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "11:30",
+     "sigla": "IMT-121",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 3,
+     "inicio": "11:30",
+     "fin": "12:15",
+     "sigla": "IMT-221",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos II",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "IMT-221",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos II",
+     "docente": "Miguel Angel Clavijo Quispe"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMT-123",
+     "paralelo": "1",
+     "materia": "Circuitos Digitales",
+     "docente": "Roberto Vidal Poma Joaniquina"
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IMT-123",
+     "paralelo": "1",
+     "materia": "Circuitos Digitales",
+     "docente": "R. V. Poma Joaniquina"
+    },
+    {
+     "dia": 3,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-121",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "M. C. Aguilera Cordero"
+    },
+    {
+     "dia": 3,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-121",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "Mabel Consuelo Aguilera Cordero"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "IMT-221",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos III",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "13:15",
+     "sigla": "IMT-221",
+     "paralelo": "2",
+     "materia": "Circuitos Electrónicos III",
+     "docente": "Axel Daniela Campero Vega"
+    },
+    {
+     "dia": 4,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "IMT-121",
+     "paralelo": "3",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "Roberto Vidal Poma Joaniquina"
+    },
+    {
+     "dia": 4,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": "IMT-121",
+     "paralelo": "3",
+     "materia": "Circuitos Electrónicos I",
+     "docente": "R. V. Poma Joaniquina"
+    },
+    {
+     "dia": 5,
+     "inicio": "18:30",
+     "fin": "19:15",
+     "sigla": "IMT-221",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos III",
+     "docente": "Edgar Callisaya Quispe"
+    },
+    {
+     "dia": 5,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "IMT-221",
+     "paralelo": "1",
+     "materia": "Circuitos Electrónicos III",
+     "docente": "Edgar Callisaya Quispe"
+    }
+   ]
+  },
+  {
+   "codigo": "C-204",
+   "nivel": "p2",
+   "tipo": "laboratorio",
+   "nombre": "Laboratorio de Sistemas de Producción",
+   "capacidad": null,
+   "foto": "/interiores/bloque-c/horario-c-204.jpg",
+   "nota": "Horario en formato propio del laboratorio (sin siglas ni paralelos).",
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Sistemas de Producción II",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 1,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Seguridad y Salud Ocupacional",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 2,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Introducción a la Producción de Bienes y Servicios",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 2,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Control Estadístico de la Calidad",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Taller de Gestión de Proyectos",
+     "docente": "Jorge Abela"
+    },
+    {
+     "dia": 2,
+     "inicio": "17:45",
+     "fin": "19:15",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Mejora Continua y Gestión de la Calidad",
+     "docente": "Jasiel Sanjines"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Sistemas de Producción II",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Seguridad y Salud Ocupacional",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Automatización e Instrumentación Industrial",
+     "docente": "Boris Ramirez"
+    },
+    {
+     "dia": 4,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Introducción a la Producción de Bienes y Servicios",
+     "docente": "Franz Blatnik"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Control Estadístico de la Calidad",
+     "docente": "Franz Blatnik"
+    }
+   ]
+  },
+  {
+   "codigo": "C-302",
+   "nivel": "p3",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 20,
+   "foto": "/interiores/bloque-c/horario-c-302.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "INB-343",
+     "paralelo": "1",
+     "materia": "Prácticas Preprofesionales",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    },
+    {
+     "dia": 3,
+     "inicio": "07:15",
+     "fin": "08:45",
+     "sigla": "INB-232",
+     "paralelo": "1",
+     "materia": "Anatomía Humana",
+     "docente": "Cesar Armando Borda Rivera"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "INB-342",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "INB-342",
+     "paralelo": "1",
+     "materia": "Taller de Grado I",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    },
+    {
+     "dia": 4,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "INB-343",
+     "paralelo": "1",
+     "materia": "Prácticas Preprofesionales",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    },
+    {
+     "dia": 4,
+     "inicio": "19:30",
+     "fin": "21:00",
+     "sigla": "INB-221",
+     "paralelo": "1",
+     "materia": "Bioinstrumentación",
+     "docente": "Alejandra Ayad Rubin de Celis"
+    },
+    {
+     "dia": 5,
+     "inicio": "11:30",
+     "fin": "12:15",
+     "sigla": "INB-344",
+     "paralelo": "1",
+     "materia": "Taller de Grado II",
+     "docente": "L. G. Aparicio Amonzabel"
+    },
+    {
+     "dia": 5,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "INB-344",
+     "paralelo": "1",
+     "materia": "Taller de Grado II",
+     "docente": "Liz Guadalupe Aparicio Amonzabel"
+    }
+   ]
+  },
+  {
+   "codigo": "C-303",
+   "nivel": "p3",
+   "tipo": "laboratorio",
+   "nombre": "Laboratorio de Bioquímica y Bioprocesos",
+   "capacidad": null,
+   "foto": "/interiores/bloque-c/horario-c-303.jpg",
+   "nota": "Horario en formato propio del laboratorio (sin siglas, paralelos ni docentes).",
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Ingeniería Bioquímica y Laboratorio",
+     "docente": null
+    },
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Ingeniería Bioquímica y Laboratorio",
+     "docente": null
+    },
+    {
+     "dia": 3,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Microbiología General",
+     "docente": null
+    },
+    {
+     "dia": 3,
+     "inicio": "17:45",
+     "fin": "18:30",
+     "sigla": null,
+     "paralelo": null,
+     "materia": "Microbiología General",
+     "docente": null
+    }
+   ]
+  },
+  {
+   "codigo": "C-304",
+   "nivel": "p3",
+   "tipo": "aula",
+   "nombre": null,
+   "capacidad": 30,
+   "foto": "/interiores/bloque-c/horario-c-304.jpg",
+   "nota": null,
+   "clases": [
+    {
+     "dia": 1,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "QMC-112",
+     "paralelo": "1-A",
+     "materia": "Química General II y Laboratorio",
+     "docente": "Grima Nair Velasco Alconce"
+    },
+    {
+     "dia": 2,
+     "inicio": "16:00",
+     "fin": "17:30",
+     "sigla": "QMC-111",
+     "paralelo": "2-A",
+     "materia": "Química General I y Laboratorio",
+     "docente": "Paola Andrea Gutierrez Rocha"
+    },
+    {
+     "dia": 3,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "QMC-121",
+     "paralelo": "1-A",
+     "materia": "Química Orgánica I y Laboratorio",
+     "docente": "Beba Virginia Montaño Perez"
+    },
+    {
+     "dia": 3,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "QMC-122",
+     "paralelo": "1-A",
+     "materia": "Química Orgánica II y Laboratorio",
+     "docente": "Vladimiro Moises Camacho Montero"
+    },
+    {
+     "dia": 3,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "QMC-111",
+     "paralelo": "2-B",
+     "materia": "Química General I y Laboratorio",
+     "docente": "Doynel David Gutierrez Yapu"
+    },
+    {
+     "dia": 3,
+     "inicio": "14:15",
+     "fin": "15:45",
+     "sigla": "QMC-112",
+     "paralelo": "1-B",
+     "materia": "Química General II y Laboratorio",
+     "docente": "Grima Nair Velasco Alconce"
+    },
+    {
+     "dia": 4,
+     "inicio": "12:30",
+     "fin": "14:00",
+     "sigla": "QMC-122",
+     "paralelo": "1-C",
+     "materia": "Química Orgánica II y Laboratorio",
+     "docente": "Paola Andrea Gutierrez Rocha"
+    },
+    {
+     "dia": 5,
+     "inicio": "09:00",
+     "fin": "10:30",
+     "sigla": "QMC-121",
+     "paralelo": "1-B",
+     "materia": "Química Orgánica I y Laboratorio",
+     "docente": "Beba Virginia Montaño Perez"
+    },
+    {
+     "dia": 5,
+     "inicio": "10:45",
+     "fin": "12:15",
+     "sigla": "QMC-122",
+     "paralelo": "1-B",
+     "materia": "Química Orgánica II y Laboratorio",
+     "docente": "Paola Andrea Gutierrez Rocha"
+    }
+   ]
+  }
+ ]
+}

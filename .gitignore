@@ -12,3 +12,6 @@ dist
 
 # Videos del relevamiento del campus: pesan mucho y no forman parte de la app
 videos/
+
+# Fotos originales del Bloque C: la app usa las versiones optimizadas de public/interiores/
+Imagenes del bloque C desde sotano al ultimo piso/

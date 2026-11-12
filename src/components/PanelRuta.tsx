@@ -21,6 +21,8 @@ interface Props {
   onAccesible: (valor: boolean) => void;
   onUsarGps: () => void;
   onDejarGps: () => void;
+  /** Solo si el destino tiene pisos y horarios cargados (por ahora, el Bloque C). */
+  onVerInterior?: () => void;
 }
 
 function mensajeGps(gps: EstadoGps, origen: OrigenGps | null, siguiendo: boolean): string | null {
@@ -53,6 +55,7 @@ export default function PanelRuta({
   onAccesible,
   onUsarGps,
   onDejarGps,
+  onVerInterior,
 }: Props) {
   const porId = useMemo(() => new Map(datos.lugares.map((l) => [l.id, l])), [datos]);
   const enCampus = useMemo(() => ordenarPorNombre(datos.lugares.filter(esVisible)), [datos]);
@@ -195,6 +198,12 @@ export default function PanelRuta({
               </span>
             </li>
           </ol>
+
+          {onVerInterior && (
+            <button type="button" className="boton secundario" onClick={onVerInterior}>
+              Ver los pisos, laboratorios y horarios de aulas
+            </button>
+          )}
 
           {datos.config.escala_calibrada === 0 && (
             <p className="nota">Distancias y tiempos estimados a partir del plano del campus (escala aproximada).</p>

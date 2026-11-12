@@ -1,4 +1,14 @@
 import { buscarEnCampus, normalizar, type ResultadoBusqueda } from './busqueda';
+import {
+  buscarAulas,
+  buscarEnPisos,
+  claseActual,
+  nivelDe,
+  nombreAula,
+  siguienteClase,
+  textoClase,
+  type Interior,
+} from './interiores';
 import { calcularRuta, formatoDistancia, formatoTiempo, INGRESO_PRINCIPAL } from './rutas';
 import { claveDia, estadoEvento, rangoEvento } from './tiempo';
 import { esVisible, type DatosCampus, type Evento, type Lugar } from './tipos';
@@ -11,17 +21,23 @@ import { esVisible, type DatosCampus, type Evento, type Lugar } from './tipos';
 export type Accion =
   | { tipo: 'ir'; etiqueta: string; lugarId: string; desdeId?: string; accesible?: boolean }
   | { tipo: 'eventos' | 'directorio' | 'vista3d' | 'gps' | 'accesible'; etiqueta: string }
+  /** Abre los pisos y horarios de un bloque, en un aula (codigo) o en un piso (nivel) si se indican. */
+  | { tipo: 'aula'; etiqueta: string; lugarId: string; codigo: string | null; nivel?: string }
   | { tipo: 'pregunta'; etiqueta: string; texto: string };
 
 export interface Respuesta {
   texto: string;
   acciones?: Accion[];
+  /** "baja": el asistente local no entendió la pregunta; conviene preguntarle a la IA. */
+  confianza?: 'baja';
 }
 
 export interface Contexto {
   datos: DatosCampus;
   desdeId: string;
   accesible: boolean;
+  /** Pisos y horarios de aulas (por ahora, del Bloque C). */
+  interiores?: Interior[];
   ahora?: number;
 }
 
@@ -131,6 +147,7 @@ const CAPACIDADES: Respuesta = {
     'Puedo ayudarte con:\n' +
     '• Cómo llegar a un bloque, oficina o aula: «¿Cómo llego a Caja?», «¿Dónde queda el aula D12?».\n' +
     '• Los eventos de la UCB: «¿Qué eventos hay hoy?», «¿Cuándo es la Meca Gala?».\n' +
+    '• Aulas y horarios del Bloque C: «¿Dónde es Control I?», «¿Qué clase hay ahora en el C-201?».\n' +
     '• Usar el GPS, los códigos QR, la vista 3D o la ruta sin escaleras.\n' +
     '• Encontrar oficinas y carreras en el directorio.',
   acciones: SUGERENCIAS.slice(0, 5),
@@ -142,7 +159,9 @@ const RELLENO = new Set(
     'como llego llegar llegamos voy ir donde queda quedan esta estan es son se encuentra encuentro encontrar ubicado ' +
     'ubicada quiero necesito busco buscar llevame lleva ruta camino hacia hasta para por favor el la los las lo de del al ' +
     'a un una en que cual mi me hay y o cuanto tardo demoro tiempo distancia tengo puedo podria ayudame ayuda dime decime ' +
-    'oficina bloque bloques edificio campus universidad ucb aula piso sin escaleras escalera gradas silla ruedas'
+    'oficina bloque bloques edificio campus universidad ucb aula piso sin escaleras escalera gradas silla ruedas ' +
+    'clase clases materia materias horario horarios dicta dictan da dan pasa pasan toca tengo hoy ahora docente ' +
+    'profesor profesora ingeniero ingeniera licenciado licenciada ing lic'
   ).split(' '),
 );
 
@@ -169,6 +188,16 @@ const GENERICAS = new Set(
 
 const INTENCION_LUGAR =/como (llego|llegar|voy)|donde|\bir a|llevame|\bruta\b|queda|busco|encuentro|cuanto (tardo|demoro|camino)/;
 
+/** Lo que se pregunta, sin las palabras de alrededor: «dónde es control i» → «control i». */
+function fraseCentral(texto: string): string {
+  const palabras = texto.split(/[^a-z0-9ñ]+/).filter(Boolean);
+  let i = 0;
+  let j = palabras.length;
+  while (i < j && RELLENO.has(palabras[i])) i++;
+  while (j > i && RELLENO.has(palabras[j - 1])) j--;
+  return palabras.slice(i, j).join(' ');
+}
+
 function resolverLugar(datos: DatosCampus, texto: string): ResultadoBusqueda | null {
   const bloque = texto.match(/\bbloque\s+([a-z])\b/);
   if (bloque) {
@@ -183,11 +212,7 @@ function resolverLugar(datos: DatosCampus, texto: string): ResultadoBusqueda | n
   }
 
   const palabras = texto.split(/[^a-z0-9ñ]+/).filter(Boolean);
-  let i = 0;
-  let j = palabras.length;
-  while (i < j && RELLENO.has(palabras[i])) i++;
-  while (j > i && RELLENO.has(palabras[j - 1])) j--;
-  const frase = palabras.slice(i, j).join(' ');
+  const frase = fraseCentral(texto);
   if (frase) {
     const [primero] = buscarEnCampus(datos, frase);
     if (primero) return primero;
@@ -244,6 +269,85 @@ function respuestaLugar(ctx: Contexto, { lugar, detalle }: ResultadoBusqueda, ac
     texto: `${donde}\n\n${resumenRuta(ctx, lugar, accesible, desdeId)}`,
     acciones: [
       { tipo: 'ir', lugarId: lugar.id, desdeId, accesible, etiqueta: accesible ? 'Ver la ruta sin escaleras' : 'Ver la ruta en el mapa' },
+    ],
+  };
+}
+
+// Preguntas sobre aulas y clases: se responden con los horarios antes de buscar lugares.
+const PIDE_AULA = /\baula\b|\bclases?\b|\bmaterias?\b|horario|docente|profesor|\bc\s*-?\s*\d{3}\b|\bsigla|paralelo/;
+
+/** «en la Planta Baja», «en el Piso 2». */
+const enNivel = (nombre: string) => `en ${/^(planta|terraza)/i.test(nombre) ? 'la' : 'el'} ${nombre}`;
+
+function respuestaAulas(ctx: Contexto, texto: string, porPalabras: boolean): Respuesta | null {
+  const interiores = ctx.interiores ?? [];
+  if (!interiores.length) return null;
+  const codigo = texto.match(/\bc\s*-?\s*(\d{3})\b/);
+  // Primero la frase completa («control i»); si la pregunta es claramente sobre clases,
+  // también cada palabra importante («¿en qué aula da clases Clavijo?» → «clavijo»).
+  const frase = fraseCentral(texto);
+  const palabras = porPalabras ? frase.split(' ').filter((p) => p.length >= 4 && !GENERICAS.has(p)) : [];
+  const candidatas = codigo ? [`c${codigo[1]}`] : [frase, ...palabras.sort((a, b) => b.length - a.length)];
+  let resultados: ReturnType<typeof buscarAulas> = [];
+  for (const c of candidatas) {
+    resultados = buscarAulas(interiores, c);
+    if (resultados.length) break;
+  }
+  if (!resultados.length) return null;
+  const [primero] = resultados;
+  const { interior } = primero;
+  const lugar = ctx.datos.lugares.find((l) => l.id === interior.lugar_id);
+  const irAlBloque: Accion[] = lugar ? [{ tipo: 'ir', lugarId: lugar.id, etiqueta: `Cómo llegar al Bloque ${interior.bloque}` }] : [];
+
+  // Se preguntó por un aula concreta: dónde está y qué hay ahora.
+  if (!primero.clases.length) {
+    const { aula } = primero;
+    const actual = claseActual(aula, ctx.ahora);
+    const siguiente = siguienteClase(aula, ctx.ahora);
+    const estado = actual
+      ? `Ahora hay ${actual.materia} (hasta las ${actual.fin}).`
+      : siguiente
+        ? `Ahora está libre; hoy la próxima clase es ${siguiente.materia} a las ${siguiente.inicio}.`
+        : 'Ahora está libre y hoy ya no tiene más clases.';
+    const capacidad = aula.capacidad ? `, con capacidad para ${aula.capacidad}` : '';
+    const ruta = lugar ? `\n\n${resumenRuta(ctx, lugar, ctx.accesible)}` : '';
+    return {
+      texto: `${nombreAula(aula)} está ${enNivel(nivelDe(interior, aula)?.nombre ?? '')} del Bloque ${interior.bloque}${capacidad}. ${estado}${ruta}`,
+      acciones: [{ tipo: 'aula', lugarId: interior.lugar_id, codigo: aula.codigo, etiqueta: `Horario del ${aula.codigo}` }, ...irAlBloque],
+    };
+  }
+
+  // Se preguntó por una materia o un docente: en qué aulas y a qué hora.
+  const materia = primero.clases[0].materia;
+  const unaMateria = resultados.every((r) => r.clases.every((c) => c.materia === materia));
+  const lineas = resultados.slice(0, 4).map(({ aula, clases }) => {
+    const donde = `• ${nombreAula(aula)}, ${nivelDe(interior, aula)?.nombre}`;
+    if (!clases.length) return donde;
+    const cuando = clases.map((c) => (unaMateria ? textoClase(c) : `${c.materia} (${textoClase(c)})`)).join(', ');
+    return `${donde}: ${cuando}`;
+  });
+  const titulo = unaMateria ? `«${materia}» se dicta en el Bloque ${interior.bloque}:` : `Encontré estas clases en el Bloque ${interior.bloque}:`;
+  const mas = resultados.length > 4 ? `\n…y en ${resultados.length - 4} aulas más (búscalas en el Directorio).` : '';
+  return {
+    texto: `${titulo}\n${lineas.join('\n')}${mas}\n\nSegún los horarios del ${interior.semestre.toLowerCase()}.`,
+    acciones: [
+      ...resultados.slice(0, 2).map(({ aula }): Accion => ({ tipo: 'aula', lugarId: interior.lugar_id, codigo: aula.codigo, etiqueta: `Ver ${aula.codigo}` })),
+      ...irAlBloque,
+    ],
+  };
+}
+
+/** Laboratorios u otros espacios que figuran en el cartel de cada piso. */
+function respuestaPiso(ctx: Contexto, texto: string): Respuesta | null {
+  const [r] = buscarEnPisos(ctx.interiores ?? [], fraseCentral(texto));
+  if (!r) return null;
+  const lugar = ctx.datos.lugares.find((l) => l.id === r.interior.lugar_id);
+  const ruta = lugar ? `\n\n${resumenRuta(ctx, lugar, ctx.accesible)}` : '';
+  return {
+    texto: `${r.elemento} está ${enNivel(r.nivel.nombre)} del Bloque ${r.interior.bloque}.${ruta}`,
+    acciones: [
+      { tipo: 'aula', lugarId: r.interior.lugar_id, codigo: null, nivel: r.nivel.id, etiqueta: `Ver ${r.nivel.nombre}` },
+      ...(lugar ? [{ tipo: 'ir', lugarId: lugar.id, etiqueta: `Cómo llegar al Bloque ${r.interior.bloque}` } as Accion] : []),
     ],
   };
 }
@@ -348,8 +452,15 @@ export function responder(pregunta: string, ctx: Contexto): Respuesta {
     const hasta = resolverLugar(ctx.datos, tramo[2]);
     if (desde && hasta && esVisible(desde.lugar)) return respuestaLugar(ctx, hasta, accesible, desde.lugar.id);
   }
+  const pideAula = PIDE_AULA.test(texto);
+  const aula = pideAula ? respuestaAulas(ctx, texto, true) : null;
+  if (aula) return aula;
   const lugar = resolverLugar(ctx.datos, texto);
   if (lugar) return respuestaLugar(ctx, lugar, accesible);
+  const piso = respuestaPiso(ctx, texto);
+  if (piso) return piso;
+  const materia = pideAula ? null : respuestaAulas(ctx, texto, false);
+  if (materia) return materia;
 
   if (ACCESIBLE.test(texto)) return AYUDA_ACCESIBLE;
   if (/que (puedes|sabes) hacer|\bayuda\b|como funciona|para que sirve|que es esta pagina|\bmenu\b|opciones/.test(texto)) {
@@ -361,6 +472,7 @@ export function responder(pregunta: string, ctx: Contexto): Respuesta {
         'No encontré ese lugar en el mapa del campus. Prueba con el nombre del bloque, la oficina o el aula (por ejemplo: ' +
         '«Bloque F», «Caja», «D12»). Si buscas algo que no está en el mapa, pregunta en la Oficina de Informaciones (Bloque K).',
       acciones: [{ tipo: 'directorio', etiqueta: 'Buscar en el directorio' }],
+      confianza: 'baja',
     };
   }
   return {
@@ -368,5 +480,6 @@ export function responder(pregunta: string, ctx: Contexto): Respuesta {
       'No entendí bien tu pregunta. Prueba con algo como «¿Cómo llego a la Biblioteca?», «¿Dónde queda Caja?» o ' +
       '«¿Qué eventos hay hoy?».',
     acciones: SUGERENCIAS.slice(0, 4),
+    confianza: 'baja',
   };
 }

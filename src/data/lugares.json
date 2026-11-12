@@ -5,7 +5,7 @@
   { "id": "ingreso_vehicular_l", "nombre": "Ingreso vehicular (Bloque L)", "tipo": "ingreso", "bloque": null, "x": 632, "y": 398, "piso": 0, "descripcion": "Ingreso y salida de vehículos, junto al Bloque L", "direccion": null },
 
   { "id": "atrio", "nombre": "Atrio", "tipo": "punto", "bloque": null, "x": 343, "y": 428, "piso": 0, "descripcion": "Plaza de ingreso al campus", "direccion": null },
-  { "id": "agora", "nombre": "Ágora", "tipo": "punto", "bloque": null, "x": 383, "y": 212, "piso": 0, "descripcion": "Plaza cubierta con coworks", "direccion": null },
+  { "id": "agora", "nombre": "Ágora", "tipo": "punto", "bloque": null, "x": 383, "y": 212, "piso": 0, "descripcion": "Salón techado con graderías de madera, mesas de estudio y coworks", "direccion": null },
   { "id": "capilla", "nombre": "Capilla «El Arca»", "tipo": "punto", "bloque": null, "x": 490, "y": 372, "piso": 0, "descripcion": "Capilla del campus", "direccion": null },
   { "id": "paraninfo", "nombre": "Paraninfo U.C.B.", "tipo": "punto", "bloque": "D", "x": 276, "y": 290, "piso": 5, "descripcion": "Bloque D, piso 5", "direccion": null },
 

@@ -4,9 +4,11 @@ import MapaCampus from './components/MapaCampus';
 import PanelRuta from './components/PanelRuta';
 import ListaEventos from './components/ListaEventos';
 import Directorio from './components/Directorio';
+import InteriorBloque from './components/InteriorBloque';
 import Marca from './components/Marca';
 import { cargarDatos, PUNTOS_GPS_LOCALES } from './lib/datos';
 import { ajustarACamino, crearGeorreferencia, origenDesdeGps } from './lib/gps';
+import { cargarInteriores, type Interior } from './lib/interiores';
 import { calcularRuta, INGRESO_PRINCIPAL } from './lib/rutas';
 import { esVisible, type DatosCampus } from './lib/tipos';
 import { useUbicacionGps } from './lib/useUbicacionGps';
@@ -36,6 +38,9 @@ export default function App() {
   const [vista3d, setVista3d] = useState(inicial.get('vista') === '3d');
   const { gps, iniciar: iniciarGps, detener: detenerGps } = useUbicacionGps();
   const [siguiendoGps, setSiguiendoGps] = useState(false);
+  const [interiores, setInteriores] = useState<Interior[]>([]);
+  // Bloque abierto en la vista de pisos y aulas (y el aula a mostrar, si se pidió una).
+  const [interiorAbierto, setInteriorAbierto] = useState<{ lugarId: string; aula: string | null; nivel?: string } | null>(null);
 
   useEffect(() => {
     cargarDatos().then((d) => {
@@ -45,6 +50,13 @@ export default function App() {
       setDesdeQR((qr) => qr && ids.has(inicial.get('desde') ?? ''));
       setHastaId((actual) => (actual && ids.has(actual) ? actual : null));
       setDatos(d);
+    });
+    cargarInteriores().then((lista) => {
+      setInteriores(lista);
+      // Enlaces del tipo ?aula=C-001 abren directamente el horario de esa aula.
+      const aula = inicial.get('aula')?.toUpperCase();
+      const conAula = aula ? lista.find((i) => i.aulas.some((a) => a.codigo === aula)) : undefined;
+      if (conAula) setInteriorAbierto({ lugarId: conAula.lugar_id, aula: aula ?? null });
     });
   }, []);
 
@@ -128,8 +140,18 @@ export default function App() {
         setAccesible(true);
         setPestana('ruta');
         break;
+      case 'aula':
+        setInteriorAbierto({ lugarId: accion.lugarId, aula: accion.codigo, nivel: accion.nivel });
+        break;
     }
   };
+
+  const interiorDe = (lugarId: string | null | undefined) => interiores.find((i) => i.lugar_id === lugarId);
+  const verInterior = (lugarId: string, aula: string | null = null) => {
+    setTocadoId(null);
+    setInteriorAbierto({ lugarId, aula });
+  };
+  const interior = interiorAbierto ? interiorDe(interiorAbierto.lugarId) : undefined;
 
   const ruta = resultado?.ok ? resultado.ruta : null;
   const tocado = datos && tocadoId ? datos.lugares.find((l) => l.id === tocadoId) : undefined;
@@ -170,9 +192,12 @@ export default function App() {
                 onAccesible={setAccesible}
                 onUsarGps={usarGps}
                 onDejarGps={dejarGps}
+                onVerInterior={interiorDe(hastaId) ? () => verInterior(hastaId!) : undefined}
               />
             )}
-            {pestana === 'directorio' && <Directorio datos={datos} onIr={irA} />}
+            {pestana === 'directorio' && (
+              <Directorio datos={datos} interiores={interiores} onIr={irA} onVerInterior={verInterior} />
+            )}
           </section>
 
           <section className="zona-mapa">
@@ -230,13 +255,38 @@ export default function App() {
                   >
                     Estoy aquí
                   </button>
+                  {interiorDe(tocado.id) && (
+                    <button type="button" className="boton secundario" onClick={() => verInterior(tocado.id)}>
+                      Pisos y aulas
+                    </button>
+                  )}
                 </div>
               </div>
             )}
           </section>
         </main>
       )}
-      {datos && <Asistente datos={datos} desdeId={desdeId} accesible={accesible} onAccion={alAccionDelAsistente} />}
+      {datos && (
+        <Asistente
+          datos={datos}
+          interiores={interiores}
+          desdeId={desdeId}
+          accesible={accesible}
+          onAccion={alAccionDelAsistente}
+        />
+      )}
+      {interior && interiorAbierto && (
+        <InteriorBloque
+          interior={interior}
+          aulaInicial={interiorAbierto.aula}
+          nivelInicial={interiorAbierto.nivel}
+          onCerrar={() => setInteriorAbierto(null)}
+          onComoLlegar={() => {
+            setInteriorAbierto(null);
+            irA(interior.lugar_id);
+          }}
+        />
+      )}
     </div>
   );
 }

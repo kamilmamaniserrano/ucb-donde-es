@@ -9,7 +9,7 @@ export interface MensajeChat {
 /** El servidor no tiene la IA configurada: no tiene sentido volver a intentar en esta visita. */
 export class IANoDisponible extends Error {}
 
-const TIPOS = new Set(['ir', 'eventos', 'directorio', 'vista3d', 'gps', 'accesible']);
+const TIPOS = new Set(['ir', 'eventos', 'directorio', 'vista3d', 'gps', 'accesible', 'aula']);
 
 /**
  * Pregunta a la IA (Gemini, a través de /api/chat) y valida su respuesta: solo se aceptan acciones
@@ -44,8 +44,13 @@ export async function preguntarIA(historial: MensajeChat[], ctx: Contexto): Prom
       if (enMapa.has(lugarId) && !acciones.some((x) => x.tipo === 'ir' && x.lugarId === lugarId)) {
         acciones.push({ tipo: 'ir', lugarId, accesible: a.accesible === true || sinEscaleras, etiqueta });
       }
+    } else if (a.tipo === 'aula') {
+      // Solo aulas que existen en los horarios cargados.
+      const codigo = typeof a.aula === 'string' ? a.aula.trim().toUpperCase() : '';
+      const interior = ctx.interiores?.find((i) => i.aulas.some((x) => x.codigo === codigo));
+      if (interior) acciones.push({ tipo: 'aula', lugarId: interior.lugar_id, codigo, etiqueta });
     } else {
-      acciones.push({ tipo: a.tipo as Exclude<Accion['tipo'], 'ir' | 'pregunta'>, etiqueta });
+      acciones.push({ tipo: a.tipo as Exclude<Accion['tipo'], 'ir' | 'aula' | 'pregunta'>, etiqueta });
     }
   }
 

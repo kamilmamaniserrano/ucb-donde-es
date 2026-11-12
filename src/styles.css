@@ -1067,6 +1067,205 @@ code {
   outline-offset: -1px;
 }
 
+/* ---------- Pisos y aulas de un bloque ---------- */
+
+.interior-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  background: rgba(15, 17, 40, 0.45);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.interior {
+  width: min(560px, 100%);
+  height: 100%;
+  background: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 30px rgba(20, 22, 60, 0.25);
+}
+
+.interior-cabecera {
+  background: var(--azul);
+  color: var(--blanco);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.interior-cabecera div {
+  display: flex;
+  flex-direction: column;
+}
+
+.interior-cabecera small {
+  opacity: 0.85;
+  font-size: 0.78rem;
+}
+
+.interior-cabecera .cerrar {
+  border: 0;
+  background: none;
+  color: var(--blanco);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.interior-pisos {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--borde);
+  background: var(--fondo);
+}
+
+.interior-pisos button {
+  flex: none;
+  min-width: 44px;
+  border: 1px solid var(--borde);
+  background: var(--blanco);
+  color: var(--azul);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.interior-pisos button[aria-selected='true'] {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: var(--blanco);
+}
+
+.interior-cuerpo {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.interior-cuerpo h3 {
+  color: var(--azul-osc);
+  font-size: 1.1rem;
+}
+
+.interior-cuerpo h4 {
+  font-size: 0.92rem;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interior-croquis {
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+}
+
+.interior-croquis img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.interior-croquis span {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(28, 31, 94, 0.85);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.interior-pie {
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--borde);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.interior-pie small {
+  font-size: 0.72rem;
+}
+
+.estado-aula {
+  font-size: 0.8rem;
+}
+
+.estado-aula.ocupada {
+  color: #b45309;
+}
+
+.estado-aula.libre {
+  color: #11602f;
+}
+
+.enlace-volver {
+  align-self: flex-start;
+  border: 0;
+  background: none;
+  color: var(--azul);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dia-horario {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.dia-horario.hoy {
+  border-color: #9be0b4;
+  background: #f6fcf8;
+}
+
+.dia-horario ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dia-horario li {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.dia-horario li small {
+  display: block;
+  color: var(--suave);
+  font-size: 0.75rem;
+}
+
+.hora-clase {
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.clase-actual {
+  background: #fff3e0;
+  border-radius: 8px;
+  padding: 4px 6px;
+  margin: 0 -6px;
+}
+
 /* ---------- Páginas de administración y QR ---------- */
 
 .pagina {

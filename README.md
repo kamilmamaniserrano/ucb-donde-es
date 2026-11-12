@@ -15,8 +15,12 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
   sube por el Bloque D hasta el Paraninfo, en el piso 5) y el piso de destino se ilumina.
 - **Asistente** (botón «¿Necesitas ayuda?»): chat que responde en español cómo llegar a lugares, oficinas y aulas,
   qué eventos hay y cómo usar la página (GPS, QR, 3D, ruta sin escaleras, calendario). Sus respuestas traen botones
-  que ejecutan la acción: mostrar la ruta, activar el GPS, abrir la vista 3D, etc. Responde con IA (Gemini Flash)
-  si está configurada y, si no, con un asistente local por palabras clave (`src/lib/asistente.ts`).
+  que ejecutan la acción: mostrar la ruta, activar el GPS, abrir la vista 3D, etc. Lo que entiende el asistente
+  local (`src/lib/asistente.ts`) lo responde él, al instante y con cálculo exacto; el resto lo responde la IA
+  (Gemini Flash), si está configurada.
+- **Bloque C por dentro** (botón «Pisos y aulas»): croquis de cada piso, laboratorios y el horario semanal de las
+  aulas, con el estado en vivo («Ahora: Control I hasta 17:30» / «Libre ahora»). Se busca por aula, materia, sigla
+  o docente en el directorio y en el chat, y se abre directo con `?aula=C-201`.
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.
@@ -148,14 +152,29 @@ navegador ──► /api/chat (función de Vercel, api/chat.ts) ──► Gemini
   falla o tarda más de 8 s, se usa `gemini-3.5-flash` con razonamiento mínimo como respaldo. Se pueden cambiar con
   `GEMINI_MODEL` y `GEMINI_MODEL_RESPALDO`. Los Flash más nuevos (como `gemini-3.8-flash`) suelen estar saturados en
   el plan gratuito.
+- **Cuándo se usa:** solo si el asistente local no entiende la pregunta. Rutas, aulas, materias, docentes y eventos
+  se responden localmente porque ahí el cálculo es exacto (Gemini se equivocaba al comparar horas).
 - **Qué recibe la IA:** una guía de uso de la página y los datos del campus. Se le pide no inventar lugares ni
-  horarios y no calcular distancias.
+  horarios y no calcular distancias. Si la conversación habla de clases (o nombra una materia, sigla o apellido de
+  docente), también recibe los horarios del Bloque C y el estado de cada aula en este momento, calculado en el servidor.
 - **Qué devuelve:** acciones (`ir`, `eventos`, `gps`, `vista3d`…). La app las valida (solo acepta lugares del mapa)
   y agrega los metros y minutos con su propio cálculo de rutas (`src/lib/asistenteIA.ts`).
-- **Si la IA no está configurada o falla**, responde el asistente local, sin que la persona lo note.
+- **Si la IA no está configurada o falla** (por ejemplo, un 503 «high demand» de Google), queda la respuesta del
+  asistente local.
 - **Protección:** hasta 15 consultas por minuto por IP, mensajes de hasta 500 caracteres y solo los últimos 8
   mensajes de la conversación.
 - **En local:** `npm run dev` también atiende `/api/chat` (plugin en `vite.config.ts`).
+
+## Bloque C por dentro (pisos, aulas y horarios)
+
+- **Datos:** `public/datos/bloque-c.json`, con 8 niveles (S2, S1, PB, pisos 1 a 4 y terraza), lo que hay en cada uno
+  y 15 aulas con 351 clases. Se transcribieron de las fotos de los carteles de cada piso y de los horarios pegados
+  en las puertas. La foto sigue siendo la referencia oficial, y cada aula tiene un enlace a la suya.
+- **Imágenes:** `public/interiores/bloque-c/` (`croquis-<piso>.jpg` y `horario-c-XXX.jpg`), reducidas para la web.
+  Las fotos originales están en una carpeta ignorada por git.
+- **Hora:** la «clase actual» se calcula con la hora de La Paz (UTC−4), sin importar la zona del celular.
+- **Agregar otro bloque:** se crea otro JSON con el mismo formato y se agrega a `ARCHIVOS` en
+  `src/lib/interiores.ts`. Por ahora, el asistente con IA solo recibe los horarios del Bloque C (`api/chat.ts`).
 
 ## GPS (georreferencia del plano)
 

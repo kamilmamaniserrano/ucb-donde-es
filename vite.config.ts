@@ -16,7 +16,8 @@ async function atender(req: IncomingMessage, res: ServerResponse, cargar: () => 
     });
     const { POST } = await cargar();
     const respuesta = await POST(
-      new Request('http://localhost/api/chat', {
+      // Con el host real, la función puede leer los archivos de public/ (por ejemplo, los horarios).
+      new Request(`http://${req.headers.host ?? 'localhost'}/api/chat`, {
         method: req.method,
         headers: { 'content-type': 'application/json' },
         body: req.method === 'POST' ? cuerpo : undefined,

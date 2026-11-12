@@ -13,7 +13,7 @@
   { "desde": "bloque_d", "hasta": "paraninfo", "tipo": "ascensor", "distancia_m": null, "indicacion": "Toma el ascensor panorámico (de vidrio) junto a la entrada del Bloque D hasta el piso 5", "indicacion_vuelta": "Toma el ascensor hasta la planta baja del Bloque D" },
   { "desde": "bloque_g1", "hasta": "bloque_d", "tipo": "camino", "distancia_m": null, "indicacion": "Pasa frente a la entrada del Bloque G y sigue hasta el Bloque D", "indicacion_vuelta": "Camina hasta la entrada G1 del Bloque G" },
   { "desde": "bloque_d", "hasta": "x_d_g1", "tipo": "camino", "distancia_m": null, "indicacion": "Sigue por el pasillo entre el Bloque D y el Bloque G", "indicacion_vuelta": "Sigue por el pasillo hasta la entrada del Bloque D" },
-  { "desde": "x_d_g1", "hasta": "x_agora_o", "tipo": "camino", "distancia_m": null, "indicacion": "Continúa hasta el extremo oeste del Ágora", "indicacion_vuelta": "Baja por el pasillo entre el Bloque D y el Bloque G" },
+  { "desde": "x_d_g1", "hasta": "x_agora_o", "tipo": "escaleras", "distancia_m": null, "indicacion": "Baja las escaleras hacia la salida oeste del Ágora", "indicacion_vuelta": "Al salir del Ágora, sube las escaleras hacia el pasillo del Bloque D" },
   { "desde": "x_agora_o", "hasta": "agora", "tipo": "camino", "distancia_m": null, "indicacion": "Entra al Ágora", "indicacion_vuelta": "Camina hacia el extremo oeste del Ágora" },
   { "desde": "x_agora_o", "hasta": "coliseo", "tipo": "camino", "distancia_m": null, "indicacion": "Bordea el Ágora por el lado del Coliseo hasta su entrada", "indicacion_vuelta": "Bordea el Ágora hacia su extremo oeste" },
   { "desde": "agora", "hasta": "coliseo", "tipo": "camino", "distancia_m": null, "indicacion": "Cruza hacia la entrada del Coliseo", "indicacion_vuelta": "Cruza hacia el Ágora" },
@@ -24,8 +24,8 @@
   { "desde": "x_norte", "hasta": "bloque_c", "tipo": "camino", "distancia_m": null, "indicacion": "Llega al Bloque C", "indicacion_vuelta": "Camina hacia la explanada frente al Bloque B" },
   { "desde": "x_norte", "hasta": "bloque_f", "tipo": "camino", "distancia_m": null, "indicacion": "Baja por el lado oeste del Bloque F hasta su entrada", "indicacion_vuelta": "Sube por el lado oeste del Bloque F hacia los Bloques B y C" },
   { "desde": "x_f_o", "hasta": "bloque_f", "tipo": "camino", "distancia_m": null, "indicacion": "Llega a la entrada del Bloque F", "indicacion_vuelta": "Baja hacia el paso entre el Bloque F y la Cafetería" },
-  { "desde": "x_agora_ne", "hasta": "x_f_o", "tipo": "camino", "distancia_m": null, "indicacion": "Camina hacia el Bloque F", "indicacion_vuelta": "Camina hacia el extremo noreste del Ágora" },
-  { "desde": "x_f_o", "hasta": "x_h", "tipo": "camino", "distancia_m": null, "indicacion": "Baja hacia la Cafetería", "indicacion_vuelta": "Sube hacia el Bloque F" },
+  { "desde": "x_agora_ne", "hasta": "x_f_o", "tipo": "escaleras", "distancia_m": null, "indicacion": "Baja las gradas anchas hacia la plaza del Bloque F", "indicacion_vuelta": "Sube las gradas anchas hasta la entrada del Ágora" },
+  { "desde": "x_f_o", "hasta": "x_h", "tipo": "escaleras", "distancia_m": null, "indicacion": "Baja las gradas del jardín hacia la Cafetería", "indicacion_vuelta": "Sube las gradas del jardín hacia la plaza del Bloque F" },
   { "desde": "x_h", "hasta": "cafeteria", "tipo": "camino", "distancia_m": null, "indicacion": "Llega a la Cafetería", "indicacion_vuelta": "Camina hacia el lado oeste de la Cafetería" },
   { "desde": "bloque_k", "hasta": "bloque_g1", "tipo": "escaleras", "distancia_m": null, "indicacion": "Sube los tramos de escaleras (pasando la terraza con vista) hasta la entrada G1 del Bloque G", "indicacion_vuelta": "Baja los tramos de escaleras hacia el Bloque K" },
   { "desde": "bloque_k", "hasta": "x_k_ne", "tipo": "camino", "distancia_m": null, "indicacion": "Toma el camino de la derecha, junto al Bloque G", "indicacion_vuelta": "Baja hacia el Bloque K" },
@@ -41,7 +41,7 @@
   { "desde": "capilla", "hasta": "x_este", "tipo": "camino", "distancia_m": null, "indicacion": "Camina hacia la Biblioteca", "indicacion_vuelta": "Camina hacia la Capilla «El Arca»" },
   { "desde": "x_este", "hasta": "x_i_n", "tipo": "camino", "distancia_m": null, "indicacion": "Sigue por el jardín junto a la Biblioteca (pasando sus gradas rojas) hacia el Bloque F", "indicacion_vuelta": "Camina por el jardín junto a la Biblioteca hacia la escalinata" },
   { "desde": "x_este", "hasta": "biblioteca", "tipo": "escaleras", "distancia_m": null, "indicacion": "Sube las gradas rojas hasta la entrada de la Biblioteca", "indicacion_vuelta": "Baja las gradas rojas de la Biblioteca" },
-  { "desde": "bloque_f", "hasta": "x_i_n", "tipo": "camino", "distancia_m": null, "indicacion": "Rodea el Bloque F hacia la Biblioteca", "indicacion_vuelta": "Camina hacia el Bloque F" },
+  { "desde": "bloque_f", "hasta": "x_i_n", "tipo": "escaleras", "distancia_m": null, "indicacion": "Baja las gradas junto al puente peatonal hacia el jardín de la Biblioteca", "indicacion_vuelta": "Sube las gradas junto al puente peatonal hasta el Bloque F" },
   { "desde": "x_i_n", "hasta": "biblioteca", "tipo": "camino", "distancia_m": null, "indicacion": "Baja hasta la entrada de la Biblioteca", "indicacion_vuelta": "Sube hacia el jardín entre la Biblioteca y el Bloque F" },
   { "desde": "x_i_n", "hasta": "ingreso_vehicular_este", "tipo": "camino", "distancia_m": null, "indicacion": "Cruza el parqueo hacia el ingreso vehicular", "indicacion_vuelta": "Desde el ingreso vehicular, cruza el parqueo hacia el Bloque F" }
 ]
