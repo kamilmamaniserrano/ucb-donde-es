@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { responder, saludo, type Accion, type Respuesta } from '../lib/asistente';
+import { IANoDisponible, preguntarIA } from '../lib/asistenteIA';
 import type { DatosCampus } from '../lib/tipos';
 
 interface Mensaje extends Respuesta {
   id: number;
   de: 'asistente' | 'persona';
+  /** Respuesta generada por la IA (Gemini). */
+  ia?: boolean;
 }
 
 export type AccionAsistente = Exclude<Accion, { tipo: 'pregunta' }>;
@@ -21,6 +24,8 @@ export default function Asistente({ datos, desdeId, accesible, onAccion }: Props
   const [abierto, setAbierto] = useState(false);
   const [mensajes, setMensajes] = useState<Mensaje[]>([]);
   const [texto, setTexto] = useState('');
+  const [escribiendo, setEscribiendo] = useState(false);
+  const iaDisponible = useRef(true);
   const fin = useRef<HTMLDivElement>(null);
   const entrada = useRef<HTMLInputElement>(null);
   const siguienteId = useRef(0);
@@ -36,13 +41,29 @@ export default function Asistente({ datos, desdeId, accesible, onAccion }: Props
 
   useEffect(() => {
     fin.current?.scrollIntoView({ block: 'end' });
-  }, [mensajes, abierto]);
+  }, [mensajes, abierto, escribiendo]);
 
-  const preguntar = (pregunta: string) => {
+  // Primero responde la IA; si no está configurada o falla, responde el asistente local.
+  const preguntar = async (pregunta: string) => {
     const limpia = pregunta.trim();
-    if (!limpia) return;
-    agregar({ de: 'persona', texto: limpia }, { de: 'asistente', ...responder(limpia, { datos, desdeId, accesible }) });
+    if (!limpia || escribiendo) return;
+    const historial = [...mensajes, { de: 'persona' as const, texto: limpia }].map(({ de, texto }) => ({ de, texto }));
+    const ctx = { datos, desdeId, accesible };
+    agregar({ de: 'persona', texto: limpia });
     setTexto('');
+    if (iaDisponible.current) {
+      setEscribiendo(true);
+      try {
+        agregar({ de: 'asistente', ia: true, ...(await preguntarIA(historial, ctx)) });
+        return;
+      } catch (error) {
+        if (error instanceof IANoDisponible) iaDisponible.current = false;
+        else console.warn('La IA no respondió; responde el asistente local.', error);
+      } finally {
+        setEscribiendo(false);
+      }
+    }
+    agregar({ de: 'asistente', ...responder(limpia, ctx) });
   };
 
   const ejecutar = (accion: Accion) => {
@@ -72,6 +93,7 @@ export default function Asistente({ datos, desdeId, accesible, onAccion }: Props
             {mensajes.map((m) => (
               <div key={m.id} className={`mensaje mensaje-${m.de}`}>
                 <p>{m.texto}</p>
+                {m.ia && <small className="mensaje-nota">Respuesta generada con IA · puede equivocarse</small>}
                 {m.acciones && m.acciones.length > 0 && (
                   <div className="mensaje-acciones">
                     {m.acciones.map((a, i) => (
@@ -88,8 +110,18 @@ export default function Asistente({ datos, desdeId, accesible, onAccion }: Props
                 )}
               </div>
             ))}
+            {escribiendo && (
+              <div className="mensaje mensaje-asistente">
+                <p className="escribiendo" aria-label="El asistente está escribiendo">
+                  <span />
+                  <span />
+                  <span />
+                </p>
+              </div>
+            )}
             <div ref={fin} />
           </div>
+          <p className="asistente-aviso">No compartas datos personales: las preguntas se responden con IA (Gemini de Google).</p>
           <form
             className="asistente-entrada"
             onSubmit={(e) => {
@@ -105,7 +137,7 @@ export default function Asistente({ datos, desdeId, accesible, onAccion }: Props
               aria-label="Tu pregunta"
               enterKeyHint="send"
             />
-            <button className="boton" disabled={!texto.trim()}>
+            <button className="boton" disabled={!texto.trim() || escribiendo}>
               Enviar
             </button>
           </form>

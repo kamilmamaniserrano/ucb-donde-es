@@ -15,8 +15,8 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
   sube por el Bloque D hasta el Paraninfo, en el piso 5) y el piso de destino se ilumina.
 - **Asistente** (botón «¿Necesitas ayuda?»): chat que responde en español cómo llegar a lugares, oficinas y aulas,
   qué eventos hay y cómo usar la página (GPS, QR, 3D, ruta sin escaleras, calendario). Sus respuestas traen botones
-  que ejecutan la acción: mostrar la ruta, activar el GPS, abrir la vista 3D, etc. Funciona dentro de la página, sin
-  servicios externos ni costo (`src/lib/asistente.ts`).
+  que ejecutan la acción: mostrar la ruta, activar el GPS, abrir la vista 3D, etc. Responde con IA (Gemini Flash)
+  si está configurada y, si no, con un asistente local por palabras clave (`src/lib/asistente.ts`).
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.
@@ -133,6 +133,29 @@ app. Los edificios están en `src/data/edificios.json`:
 
 Los pisos de A, C y D están confirmados. Los de B, F, G, H, I, J, K y L son estimaciones hechas a partir del plano
 maestro; corrígelos en ese archivo.
+
+## Asistente con IA (Gemini Flash)
+
+```
+navegador ──► /api/chat (función de Vercel, api/chat.ts) ──► Gemini Flash
+                 │ lee lugares, dependencias y eventos de Supabase (los guarda 5 min)
+                 └ devuelve { texto, acciones } en JSON
+```
+
+- **La clave nunca llega al navegador.** Va en la variable `GEMINI_API_KEY`, sin el prefijo `VITE_`: en Vercel en
+  Settings → Environment Variables, y en local en `.env.local`. Se obtiene en https://aistudio.google.com/apikey.
+- **Modelo:** `gemini-3.5-flash` con razonamiento mínimo, que responde en pocos segundos. Si está saturado, falla o
+  tarda más de 9 s, se usa `gemini-3.1-flash-lite` como respaldo. Se pueden cambiar con `GEMINI_MODEL` y
+  `GEMINI_MODEL_RESPALDO`. Los Flash más nuevos (como `gemini-3.8-flash`) suelen estar saturados en el plan
+  gratuito.
+- **Qué recibe la IA:** una guía de uso de la página y los datos del campus. Se le pide no inventar lugares ni
+  horarios y no calcular distancias.
+- **Qué devuelve:** acciones (`ir`, `eventos`, `gps`, `vista3d`…). La app las valida (solo acepta lugares del mapa)
+  y agrega los metros y minutos con su propio cálculo de rutas (`src/lib/asistenteIA.ts`).
+- **Si la IA no está configurada o falla**, responde el asistente local, sin que la persona lo note.
+- **Protección:** hasta 15 consultas por minuto por IP, mensajes de hasta 500 caracteres y solo los últimos 8
+  mensajes de la conversación.
+- **En local:** `npm run dev` también atiende `/api/chat` (plugin en `vite.config.ts`).
 
 ## GPS (georreferencia del plano)
 

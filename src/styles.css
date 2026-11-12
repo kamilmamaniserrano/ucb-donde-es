@@ -996,11 +996,60 @@ code {
   gap: 6px;
 }
 
+.mensaje-nota {
+  font-size: 0.7rem;
+  color: var(--suave);
+  margin-top: -4px;
+  padding-left: 4px;
+}
+
+.mensaje p.escribiendo {
+  display: flex;
+  gap: 5px;
+  padding: 14px 16px;
+}
+
+.escribiendo span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--suave);
+  animation: escribiendo 1.2s infinite ease-in-out;
+}
+
+.escribiendo span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.escribiendo span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes escribiendo {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.asistente-aviso {
+  font-size: 0.7rem;
+  color: var(--suave);
+  padding: 6px 14px 0;
+  background: var(--blanco);
+  border-top: 1px solid var(--borde);
+}
+
 .asistente-entrada {
   display: flex;
   gap: 8px;
-  padding: 10px;
-  border-top: 1px solid var(--borde);
+  padding: 8px 10px 10px;
   background: var(--blanco);
 }
 

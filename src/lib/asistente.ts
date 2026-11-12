@@ -48,6 +48,9 @@ export function saludo(): Respuesta {
 
 const ACCESIBLE = /escalera|gradas|silla de ruedas|movilidad|accesib|rampa|ascensor|discapacidad|muleta/;
 
+/** La pregunta pide evitar escaleras (silla de ruedas, muletas, etc.). */
+export const pideSinEscaleras = (pregunta: string) => ACCESIBLE.test(normalizar(pregunta));
+
 // Temas de ayuda sobre la página, reconocidos por palabras clave (texto ya sin tildes).
 const AYUDAS: { claves: RegExp; respuesta: Respuesta }[] = [
   {
@@ -225,6 +228,12 @@ function resumenRuta(ctx: Contexto, lugar: Lugar, accesible: boolean, desdeId = 
   return desdeId === INGRESO_PRINCIPAL
     ? `${texto} Lo calculé desde el ingreso principal: si estás en otro lugar, cámbialo en «¿Dónde estás?» o usa el GPS.`
     : texto;
+}
+
+/** Resumen de la ruta (metros, minutos y pisos) hasta un lugar, calculado por la app. */
+export function resumenDeRuta(ctx: Contexto, lugarId: string, accesible: boolean): string | null {
+  const lugar = ctx.datos.lugares.find((l) => l.id === lugarId);
+  return lugar ? resumenRuta(ctx, lugar, accesible) : null;
 }
 
 function respuestaLugar(ctx: Contexto, { lugar, detalle }: ResultadoBusqueda, accesible: boolean, desdeId?: string): Respuesta {
