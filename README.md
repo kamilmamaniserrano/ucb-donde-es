@@ -144,10 +144,10 @@ navegador ──► /api/chat (función de Vercel, api/chat.ts) ──► Gemini
 
 - **La clave nunca llega al navegador.** Va en la variable `GEMINI_API_KEY`, sin el prefijo `VITE_`: en Vercel en
   Settings → Environment Variables, y en local en `.env.local`. Se obtiene en https://aistudio.google.com/apikey.
-- **Modelo:** `gemini-3.5-flash` con razonamiento mínimo, que responde en pocos segundos. Si está saturado, falla o
-  tarda más de 9 s, se usa `gemini-3.1-flash-lite` como respaldo. Se pueden cambiar con `GEMINI_MODEL` y
-  `GEMINI_MODEL_RESPALDO`. Los Flash más nuevos (como `gemini-3.8-flash`) suelen estar saturados en el plan
-  gratuito.
+- **Modelo:** `gemini-3.1-flash-lite`, que en las pruebas respondió en 1–2 s y de forma estable. Si está saturado,
+  falla o tarda más de 8 s, se usa `gemini-3.5-flash` con razonamiento mínimo como respaldo. Se pueden cambiar con
+  `GEMINI_MODEL` y `GEMINI_MODEL_RESPALDO`. Los Flash más nuevos (como `gemini-3.8-flash`) suelen estar saturados en
+  el plan gratuito.
 - **Qué recibe la IA:** una guía de uso de la página y los datos del campus. Se le pide no inventar lugares ni
   horarios y no calcular distancias.
 - **Qué devuelve:** acciones (`ir`, `eventos`, `gps`, `vista3d`…). La app las valida (solo acepta lugares del mapa)

@@ -9,13 +9,13 @@ interface MensajeChat {
   texto: string;
 }
 
-// Primero Flash con razonamiento mínimo (responde en pocos segundos). Si está saturado, falla o tarda,
-// se usa el modelo liviano. Los modelos Flash más nuevos suelen saturarse en el plan gratuito.
+// Primero Flash-Lite: en las pruebas respondió en 1–2 s y de forma estable. Si está saturado, falla o tarda,
+// se usa Flash con razonamiento mínimo. Los Flash más nuevos suelen saturarse en el plan gratuito.
 const INTENTOS: { modelo: string; razonamiento: 'minimal' | null }[] = [
-  { modelo: process.env.GEMINI_MODEL || 'gemini-3.5-flash', razonamiento: 'minimal' },
-  { modelo: process.env.GEMINI_MODEL_RESPALDO || 'gemini-3.1-flash-lite', razonamiento: null },
+  { modelo: process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite', razonamiento: null },
+  { modelo: process.env.GEMINI_MODEL_RESPALDO || 'gemini-3.5-flash', razonamiento: 'minimal' },
 ];
-const ESPERA_POR_INTENTO_MS = 9000;
+const ESPERA_POR_INTENTO_MS = 8000;
 const MAX_MENSAJES = 8;
 const MAX_CARACTERES = 500;
 const CONSULTAS_POR_MINUTO = 15;
