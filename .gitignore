@@ -1,0 +1,11 @@
+node_modules
+dist
+.vercel
+
+# Variables de entorno: nunca subir claves al repositorio
+.env
+.env.local
+.env.*.local
+
+*.log
+.DS_Store

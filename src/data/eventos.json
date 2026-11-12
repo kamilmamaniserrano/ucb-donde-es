@@ -1,0 +1,57 @@
+[
+  {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "titulo": "Sínodo · Encuentro y Asamblea de la Iglesia Católica",
+    "descripcion": "Encuentro y asamblea de la Iglesia Católica en la UCB.",
+    "inicio": "2026-11-03T08:30:00-04:00",
+    "fin": "2026-11-06T18:00:00-04:00",
+    "lugar_id": "bloque_g1",
+    "ambiente": "Auditorio Principal (Bloque G)",
+    "organizador": null,
+    "por_confirmar": true
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000002",
+    "titulo": "Feria de Marketing",
+    "descripcion": "Feria de proyectos y emprendimientos de Marketing.",
+    "inicio": "2026-11-09T09:00:00-04:00",
+    "fin": "2026-11-11T18:00:00-04:00",
+    "lugar_id": "agora",
+    "ambiente": "Ágora",
+    "organizador": null,
+    "por_confirmar": true
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "titulo": "Mecatón 2026 · TECH MECH",
+    "descripcion": "Hackathon de MECAFEST, organizada por Mecacentro UCB (Ingeniería Mecatrónica).",
+    "inicio": "2026-11-12T08:00:00-04:00",
+    "fin": "2026-11-13T18:00:00-04:00",
+    "lugar_id": "coliseo",
+    "ambiente": "Coliseo U.C.B.",
+    "organizador": "Mecacentro UCB",
+    "por_confirmar": false
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000004",
+    "titulo": "Meca Gala",
+    "descripcion": "Gala de MECAFEST.",
+    "inicio": "2026-11-13T19:00:00-04:00",
+    "fin": "2026-11-13T22:00:00-04:00",
+    "lugar_id": "paraninfo",
+    "ambiente": "Paraninfo U.C.B. · Bloque D, piso 5",
+    "organizador": "Mecacentro UCB",
+    "por_confirmar": true
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000005",
+    "titulo": "3ra Colación de Grado",
+    "descripcion": "Ceremonia de colación de grado.",
+    "inicio": "2026-11-26T09:00:00-04:00",
+    "fin": "2026-11-28T13:00:00-04:00",
+    "lugar_id": "coliseo",
+    "ambiente": "Coliseo U.C.B.",
+    "organizador": null,
+    "por_confirmar": true
+  }
+]
