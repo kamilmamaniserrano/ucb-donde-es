@@ -14,6 +14,8 @@ export interface Paso {
 export interface Segmento {
   de: [number, number];
   a: [number, number];
+  pisoDe: number;
+  pisoA: number;
   tipo: TipoCamino;
 }
 
@@ -136,7 +138,7 @@ export function calcularRuta(datos: DatosCampus, desdeId: string, hastaId: strin
     const generica = hacia.tipo === 'cruce' ? `Camina hacia ${hacia.nombre}` : `Camina hasta ${hacia.nombre}`;
     pasos.push({ texto: propia ?? generica, distancia_m: horizontal, pisos: cambioPiso, tipo: c.tipo });
     if (de.x != null && de.y != null && hacia.x != null && hacia.y != null) {
-      segmentos.push({ de: [de.x, de.y], a: [hacia.x, hacia.y], tipo: c.tipo });
+      segmentos.push({ de: [de.x, de.y], a: [hacia.x, hacia.y], pisoDe: de.piso, pisoA: hacia.piso, tipo: c.tipo });
     }
   }
 

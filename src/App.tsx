@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import MapaCampus from './components/MapaCampus';
 import PanelRuta from './components/PanelRuta';
 import ListaEventos from './components/ListaEventos';
@@ -9,6 +9,9 @@ import { georreferencia, origenDesdeGps } from './lib/gps';
 import { calcularRuta, INGRESO_PRINCIPAL } from './lib/rutas';
 import { esVisible, type DatosCampus } from './lib/tipos';
 import { useUbicacionGps } from './lib/useUbicacionGps';
+
+// La vista 3D (three.js) se descarga solo cuando alguien la abre.
+const Vista3D = lazy(() => import('./components/Vista3D'));
 
 type Pestana = 'eventos' | 'ruta' | 'directorio';
 
@@ -29,6 +32,7 @@ export default function App() {
   const [accesible, setAccesible] = useState(inicial.get('accesible') === '1');
   const [desdeQR, setDesdeQR] = useState(inicial.has('desde'));
   const [tocadoId, setTocadoId] = useState<string | null>(null);
+  const [vista3d, setVista3d] = useState(inicial.get('vista') === '3d');
   const { gps, iniciar: iniciarGps, detener: detenerGps } = useUbicacionGps(georreferencia);
   const [siguiendoGps, setSiguiendoGps] = useState(false);
 
@@ -48,10 +52,11 @@ export default function App() {
     if (desdeId !== INGRESO_PRINCIPAL || hastaId) p.set('desde', desdeId);
     if (hastaId) p.set('hacia', hastaId);
     if (accesible) p.set('accesible', '1');
+    if (vista3d) p.set('vista', '3d');
     if (modoGrafo) p.set('grafo', '1');
     const consulta = p.toString();
     window.history.replaceState(null, '', consulta ? `${window.location.pathname}?${consulta}` : window.location.pathname);
-  }, [desdeId, hastaId, accesible]);
+  }, [desdeId, hastaId, accesible, vista3d]);
 
   const origenGps = useMemo(
     () => (datos && gps.estado === 'activo' ? origenDesdeGps(datos, gps.x, gps.y) : null),
@@ -144,16 +149,32 @@ export default function App() {
           </section>
 
           <section className="zona-mapa">
-            <MapaCampus
-              datos={datos}
-              ruta={ruta}
-              desdeId={desdeId}
-              hastaId={hastaId}
-              ubicacionGps={ubicacionGps}
-              modoGrafo={modoGrafo}
-              onElegirLugar={setTocadoId}
-            />
-            {modoGrafo && <div className="aviso-grafo">Modo grafo: toca el mapa para ver coordenadas x, y</div>}
+            {vista3d ? (
+              <Suspense fallback={<div className="cargando-3d">Cargando la vista 3D…</div>}>
+                <Vista3D
+                  datos={datos}
+                  ruta={ruta}
+                  desdeId={desdeId}
+                  hastaId={hastaId}
+                  ubicacionGps={ubicacionGps}
+                  onElegirLugar={setTocadoId}
+                />
+              </Suspense>
+            ) : (
+              <MapaCampus
+                datos={datos}
+                ruta={ruta}
+                desdeId={desdeId}
+                hastaId={hastaId}
+                ubicacionGps={ubicacionGps}
+                modoGrafo={modoGrafo}
+                onElegirLugar={setTocadoId}
+              />
+            )}
+            <button type="button" className="boton-vista" aria-pressed={vista3d} onClick={() => setVista3d((v) => !v)}>
+              {vista3d ? 'Ver en 2D' : 'Ver en 3D'}
+            </button>
+            {modoGrafo && !vista3d && <div className="aviso-grafo">Modo grafo: toca el mapa para ver coordenadas x, y</div>}
             {tocado && (
               <div className="tarjeta-lugar" role="dialog" aria-label={tocado.nombre}>
                 <button type="button" className="cerrar" aria-label="Cerrar" onClick={() => setTocadoId(null)}>

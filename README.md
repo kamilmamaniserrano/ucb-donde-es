@@ -11,6 +11,8 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
   dependencias de los bloques del mapa. Solo incluye lugares dibujados en el mapa del campus principal.
 - **GPS**: el botón «Usar mi ubicación» muestra a la persona en el mapa (punto azul con su precisión) y usa el
   lugar más cercano como origen de la ruta, actualizándolo mientras camina.
+- **Vista 3D**: con el botón «Ver en 3D», los bloques se levantan según sus pisos. La ruta se ve en 3D (por ejemplo,
+  sube por el Bloque D hasta el Paraninfo, en el piso 5) y el piso de destino se ilumina.
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.
@@ -110,6 +112,23 @@ Si se hace una medición mejor:
 2. En `/admin → Escala del mapa`, elige esos dos puntos y escribe los metros.
 
 Todas las distancias y los tiempos se recalculan solos.
+
+## Vista 3D
+
+`src/components/Vista3D.tsx` usa three.js y se descarga solo cuando alguien la abre, así que no hace más lenta la
+app. Los edificios están en `src/data/edificios.json`:
+
+| Campo | Qué es |
+|---|---|
+| `poligono` | Contorno del edificio en píxeles del plano. Se obtuvo detectando los colores de cada bloque en el plano; J y K se dibujaron a mano siguiendo su borde amarillo |
+| `pisos`, `alto_piso_m` | Cantidad de pisos y altura de cada uno (3,5 m por defecto). El Coliseo es un solo volumen de 12 m (cancha polideportiva con graderías) |
+| `subsuelos` | Pisos bajo el nivel de la entrada: se ven translúcidos debajo del suelo (el Bloque C tiene 2) |
+| `tipo` | `edificio`, o `techo` para una losa elevada sin paredes (el Ágora) |
+| `lugar_id` | Lugar que se selecciona al tocar el edificio |
+| `vidrio` | Lo dibuja translúcido (J y K) |
+
+Los pisos de A, C y D están confirmados. Los de B, F, G, H, I, J, K y L son estimaciones hechas a partir del plano
+maestro; corrígelos en ese archivo.
 
 ## GPS (georreferencia del plano)
 
