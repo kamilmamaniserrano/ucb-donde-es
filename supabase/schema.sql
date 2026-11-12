@@ -51,6 +51,18 @@ create table if not exists public.config (
   valor numeric not null
 );
 
+-- Puntos de control del GPS (se cargan desde /admin → Calibrar el GPS).
+create table if not exists public.georreferencia (
+  id bigint generated always as identity primary key,
+  nombre text not null,
+  x numeric not null,
+  y numeric not null,
+  lat double precision not null,
+  lng double precision not null,
+  precision_m numeric,
+  creado_en timestamptz not null default now()
+);
+
 -- Correos con permiso para editar. Se administra solo desde el SQL Editor.
 create table if not exists public.admins (
   email text primary key
@@ -81,13 +93,14 @@ alter table public.caminos enable row level security;
 alter table public.dependencias enable row level security;
 alter table public.eventos enable row level security;
 alter table public.config enable row level security;
+alter table public.georreferencia enable row level security;
 alter table public.admins enable row level security; -- sin políticas: nadie la lee desde la API
 
 do $$
 declare
   t text;
 begin
-  foreach t in array array['lugares', 'caminos', 'dependencias', 'eventos', 'config'] loop
+  foreach t in array array['lugares', 'caminos', 'dependencias', 'eventos', 'config', 'georreferencia'] loop
     execute format('drop policy if exists "lectura publica" on public.%I', t);
     execute format('create policy "lectura publica" on public.%I for select using (true)', t);
     execute format('drop policy if exists "admins editan" on public.%I', t);
@@ -99,7 +112,7 @@ begin
 end $$;
 
 grant usage on schema public to anon, authenticated;
-grant select on public.lugares, public.caminos, public.dependencias, public.eventos, public.config to anon, authenticated;
-grant insert, update, delete on public.lugares, public.caminos, public.dependencias, public.eventos, public.config to authenticated;
+grant select on public.lugares, public.caminos, public.dependencias, public.eventos, public.config, public.georreferencia to anon, authenticated;
+grant insert, update, delete on public.lugares, public.caminos, public.dependencias, public.eventos, public.config, public.georreferencia to authenticated;
 grant usage, select on all sequences in schema public to authenticated;
 grant execute on function public.es_admin() to anon, authenticated;

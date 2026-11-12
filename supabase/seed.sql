@@ -174,6 +174,15 @@ insert into public.config (clave, valor) values
   ('metros_por_piso', 12)
 on conflict (clave) do nothing;
 
+-- Puntos de control del GPS: solo si la tabla está vacía, para no borrar la calibración hecha en /admin.
+insert into public.georreferencia (nombre, x, y, lat, lng)
+select * from (values
+  ('Capilla «El Arca» (centro del techo)', 490, 362, -16.52292283950898, -68.1118449372547),
+  ('Coliseo (centro del techo)', 335, 152, -16.522314796533973, -68.11186280294254),
+  ('Ingreso principal (puerta)', 343, 460, -16.522916416529352, -68.1122201167202)
+) as v (nombre, x, y, lat, lng)
+where not exists (select 1 from public.georreferencia);
+
 commit;
 
 -- Para dar permisos de administración, crea el usuario en Authentication → Users

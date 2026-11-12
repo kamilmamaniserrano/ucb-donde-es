@@ -4,8 +4,8 @@ import PanelRuta from './components/PanelRuta';
 import ListaEventos from './components/ListaEventos';
 import Directorio from './components/Directorio';
 import Marca from './components/Marca';
-import { cargarDatos } from './lib/datos';
-import { georreferencia, origenDesdeGps } from './lib/gps';
+import { cargarDatos, PUNTOS_GPS_LOCALES } from './lib/datos';
+import { ajustarACamino, crearGeorreferencia, origenDesdeGps } from './lib/gps';
 import { calcularRuta, INGRESO_PRINCIPAL } from './lib/rutas';
 import { esVisible, type DatosCampus } from './lib/tipos';
 import { useUbicacionGps } from './lib/useUbicacionGps';
@@ -33,7 +33,7 @@ export default function App() {
   const [desdeQR, setDesdeQR] = useState(inicial.has('desde'));
   const [tocadoId, setTocadoId] = useState<string | null>(null);
   const [vista3d, setVista3d] = useState(inicial.get('vista') === '3d');
-  const { gps, iniciar: iniciarGps, detener: detenerGps } = useUbicacionGps(georreferencia);
+  const { gps, iniciar: iniciarGps, detener: detenerGps } = useUbicacionGps();
   const [siguiendoGps, setSiguiendoGps] = useState(false);
 
   useEffect(() => {
@@ -58,16 +58,15 @@ export default function App() {
     window.history.replaceState(null, '', consulta ? `${window.location.pathname}?${consulta}` : window.location.pathname);
   }, [desdeId, hastaId, accesible, vista3d]);
 
+  const georreferencia = useMemo(() => crearGeorreferencia(datos?.puntosGps ?? PUNTOS_GPS_LOCALES), [datos]);
+  const ubicacionGps = useMemo(() => {
+    if (!datos || gps.estado !== 'activo') return null;
+    const enPlano = georreferencia.aPlano(gps.lat, gps.lng);
+    return { ...ajustarACamino(datos, enPlano.x, enPlano.y), radio: gps.precision_m / georreferencia.metrosPorPixel };
+  }, [datos, gps, georreferencia]);
   const origenGps = useMemo(
-    () => (datos && gps.estado === 'activo' ? origenDesdeGps(datos, gps.x, gps.y) : null),
-    [datos, gps],
-  );
-  const ubicacionGps = useMemo(
-    () =>
-      gps.estado === 'activo'
-        ? { x: gps.x, y: gps.y, radio: gps.precision_m / georreferencia.metrosPorPixel }
-        : null,
-    [gps],
+    () => (datos && ubicacionGps ? origenDesdeGps(datos, ubicacionGps.x, ubicacionGps.y, desdeId) : null),
+    [datos, ubicacionGps, desdeId],
   );
 
   // Mientras el GPS está en uso, el origen de la ruta sigue a la persona.

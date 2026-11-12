@@ -52,12 +52,25 @@ export interface Config {
   metros_por_piso: number;
 }
 
+/** Punto que se reconoce en el plano (x, y en píxeles) y en el GPS (lat, lng). */
+export interface PuntoControl {
+  id?: number;
+  nombre: string;
+  x: number;
+  y: number;
+  lat: number;
+  lng: number;
+  precision_m?: number | null;
+}
+
 export interface DatosCampus {
   lugares: Lugar[];
   caminos: Camino[];
   dependencias: Dependencia[];
   eventos: Evento[];
   config: Config;
+  /** Puntos de control para ubicar el GPS sobre el plano (mínimo 3). */
+  puntosGps: PuntoControl[];
   origen: 'supabase' | 'local';
 }
 

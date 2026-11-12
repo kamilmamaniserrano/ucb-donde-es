@@ -22,6 +22,7 @@ const caminos = leer('caminos.json');
 const dependencias = leer('dependencias.json');
 const eventos = leer('eventos.json');
 const config = Object.entries(leer('config.json')).map(([clave, v]) => ({ clave, valor: v }));
+const georreferencia = leer('georreferencia.json');
 
 const columnasLugar = ['id', 'nombre', 'tipo', 'bloque', 'x', 'y', 'piso', 'descripcion', 'direccion'];
 const actualizarLugar = columnasLugar.filter((c) => c !== 'id').map((c) => `${c} = excluded.${c}`).join(', ');
@@ -44,6 +45,13 @@ ${insertar(
   'on conflict (id) do nothing',
 )}
 ${insertar('config', ['clave', 'valor'], config, 'on conflict (clave) do nothing')}
+-- Puntos de control del GPS: solo si la tabla está vacía, para no borrar la calibración hecha en /admin.
+insert into public.georreferencia (nombre, x, y, lat, lng)
+select * from (values
+${georreferencia.map((p) => `  (${[p.nombre, p.x, p.y, p.lat, p.lng].map(valor).join(', ')})`).join(',\n')}
+) as v (nombre, x, y, lat, lng)
+where not exists (select 1 from public.georreferencia);
+
 commit;
 
 -- Para dar permisos de administración, crea el usuario en Authentication → Users

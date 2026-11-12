@@ -701,6 +701,11 @@ code {
   font-size: 0.82rem;
 }
 
+.texto-error {
+  color: var(--rojo);
+  font-weight: 500;
+}
+
 /* ---------- Mapa ---------- */
 
 .tarjeta-lugar {

@@ -132,19 +132,37 @@ maestro; corrígelos en ese archivo.
 
 ## GPS (georreferencia del plano)
 
-El navegador entrega la posición en latitud y longitud. Para dibujarla en el plano, `src/lib/gps.ts` ajusta una
-transformación (escala, rotación y traslación) a partir de los puntos de control de
-`src/data/georreferencia.json`. Cada punto tiene su posición en el plano (`x`, `y`) y en Google Maps (`lat`,
-`lng`).
+El navegador entrega la posición en latitud y longitud. Para dibujarla en el plano, `src/lib/gps.ts` la convierte
+con los **puntos de control**: lugares de los que se conoce su posición en el plano (`x`, `y`) y su GPS (`lat`,
+`lng`). La conversión tiene dos partes:
 
-- Hoy se usan 3 puntos: el centro del techo de la Capilla «El Arca», el centro del techo del Coliseo y el ingreso
-  principal. Con ellos, el error es de unos 2 m.
-- Para agregar un punto, ubícalo en Google Maps en vista satélite (clic derecho → copiar coordenadas) y toma su
-  `x, y` en la app con `?grafo=1`. Usa puntos fáciles de reconocer en ambos lados y repartidos por el campus.
-- Fuera del rectángulo del campus, la app guía desde el ingreso principal.
-- Como el GPS no distingue pisos, solo se eligen lugares de planta baja.
-- Necesita HTTPS (Vercel ya lo tiene) y que la persona acepte el permiso de ubicación. Al aire libre la precisión
-  típica es de 5 a 15 m; dentro de los bloques conviene usar los códigos QR.
+1. **Ajuste lineal** por mínimos cuadrados: con 3 puntos es una similaridad (escala, rotación y traslación); con 4 o
+   más es afín, que admite que el plano tenga distinta escala a lo ancho y a lo largo.
+2. **Corrección por zonas**: el error que queda en cada punto se reparte según la distancia. Así cada punto de
+   control cae exacto, aunque el plano no esté dibujado perfectamente a escala.
+
+**Calibración** (`/admin → Calibrar el GPS`): primero se ejecuta una vez `supabase/georreferencia.sql`.
+
+- Con el celular, de pie en la entrada de un lugar y al aire libre, se pulsa «Medir aquí». La app promedia 15 s de
+  lecturas buenas (±25 m o mejor), ponderadas por su precisión.
+- También se pueden pegar coordenadas de Google Maps.
+- Conviene tener **8 o más puntos repartidos**, incluidos los bordes del campus.
+- Desde 6 puntos, la app avisa si alguno no coincide con los demás (probablemente mal tomado).
+- Si la tabla no existe o tiene menos de 3 puntos, se usan los de respaldo de `src/data/georreferencia.json`.
+
+**Mientras la persona camina** (`src/lib/useUbicacionGps.ts`):
+
+- **Filtro de lecturas:** se descartan las de más de ±40 m en cuanto llega una mejor. Las primeras suelen venir de
+  antenas o wifi.
+- **Promedio:** se promedian las lecturas de los últimos 4 s, ponderadas por precisión. Así hay menos saltos y un
+  retraso de solo unos 2 m.
+- **Ajuste al camino:** el punto azul se lleva al camino más cercano si está a menos de 12 m.
+- **Estabilidad del origen:** el origen de la ruta solo cambia si otro lugar queda al menos 6 m más cerca.
+- **Fuera del campus:** la app guía desde el ingreso principal.
+- **Pisos:** el GPS no los distingue, así que solo se eligen lugares de planta baja.
+
+Necesita HTTPS (Vercel ya lo tiene) y que la persona acepte el permiso de ubicación. Al aire libre, la precisión
+típica de un celular es de 5 a 15 m. Dentro de los bloques conviene usar los códigos QR, que dan la ubicación exacta.
 
 ## Datos que hay que verificar en el campus
 

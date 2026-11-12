@@ -29,8 +29,13 @@ function mensajeGps(gps: EstadoGps, origen: OrigenGps | null, siguiendo: boolean
   if (gps.estado !== 'activo' || !siguiendo || !origen) return null;
   const precision = `precisión ±${Math.round(gps.precision_m)} m`;
   if (origen.fuera) return `Estás fuera del campus (${precision}). Te guiamos desde el ingreso principal.`;
-  const debil = gps.precision_m > 30 ? ' La señal es débil: si puedes, escanea un código QR.' : '';
-  return `Estás cerca de ${origen.lugar.nombre} (${precision}).${debil}`;
+  const extra =
+    gps.precision_m > 30
+      ? ' La señal es débil: sal al aire libre o escanea un código QR.'
+      : gps.precision_m > 15
+        ? ' Mejorando la precisión…'
+        : '';
+  return `Estás cerca de ${origen.lugar.nombre} (${precision}).${extra}`;
 }
 
 export default function PanelRuta({

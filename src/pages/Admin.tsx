@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
 import type { Session } from '@supabase/supabase-js';
+import CalibracionGps from '../components/CalibracionGps';
 import Marca from '../components/Marca';
 import { supabase } from '../lib/supabase';
 import { cargarDatos } from '../lib/datos';
@@ -170,6 +171,7 @@ function PanelAdmin({ email }: { email: string }) {
       )}
       <EditorEventos datos={datos} alGuardar={recargar} />
       <Calibracion datos={datos} alGuardar={recargar} />
+      <CalibracionGps datos={datos} alGuardar={recargar} />
       <section className="tarjeta">
         <h2>Editar el mapa</h2>
         <p>
