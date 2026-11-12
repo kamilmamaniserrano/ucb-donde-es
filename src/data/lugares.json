@@ -35,15 +35,5 @@
   { "id": "x_jardin", "nombre": "el sendero del jardín central", "tipo": "cruce", "bloque": null, "x": 440, "y": 345, "piso": 0, "descripcion": null, "direccion": null },
   { "id": "x_este", "nombre": "el sendero entre la Capilla y la Biblioteca", "tipo": "cruce", "bloque": null, "x": 560, "y": 350, "piso": 0, "descripcion": null, "direccion": null },
   { "id": "x_l", "nombre": "la esquina del jardín junto al Bloque L", "tipo": "cruce", "bloque": null, "x": 565, "y": 400, "piso": 0, "descripcion": null, "direccion": null },
-  { "id": "x_i_n", "nombre": "el jardín entre el Bloque F y la Biblioteca", "tipo": "cruce", "bloque": null, "x": 538, "y": 238, "piso": 0, "descripcion": null, "direccion": null },
-
-  { "id": "bloque_m", "nombre": "Bloque M · Arquitectura", "tipo": "externo", "bloque": "M", "x": null, "y": null, "piso": 0, "descripcion": "Carrera de Arquitectura, aulas M1 a M5", "direccion": "Av. 14 de Septiembre No 24, Calle 0, Obrajes" },
-  { "id": "bloque_n", "nombre": "Bloque N", "tipo": "externo", "bloque": "N", "x": null, "y": null, "piso": 0, "descripcion": "Centro de Idiomas, Recursos Humanos y Contabilidad", "direccion": "Av. 14 de Septiembre No 4810, Calle 2, Obrajes" },
-  { "id": "bloque_o", "nombre": "Bloque O · Parqueo", "tipo": "externo", "bloque": "O", "x": null, "y": null, "piso": 0, "descripcion": "Parqueo", "direccion": "Av. 14 de Septiembre No 4850, Calle 2, Obrajes" },
-  { "id": "bloque_p", "nombre": "Bloque P", "tipo": "externo", "bloque": "P", "x": null, "y": null, "piso": 0, "descripcion": "Comunicación Social y Psicología", "direccion": "Av. Hernando Siles No 4737, entre Calles 1 y 2, Obrajes" },
-  { "id": "bloque_s", "nombre": "Bloque S", "tipo": "externo", "bloque": "S", "x": null, "y": null, "piso": 0, "descripcion": "Economía e IISEC", "direccion": "Av. 14 de Septiembre No 4836, Calle 2, Obrajes" },
-  { "id": "bloque_t", "nombre": "Bloque T", "tipo": "externo", "bloque": "T", "x": null, "y": null, "piso": 0, "descripcion": "Ciencias Económicas y Financieras, Marketing Digital", "direccion": "Av. 14 de Septiembre No 4770, entre Calles 1 y 2, Obrajes" },
-  { "id": "bloque_u", "nombre": "Bloque U · Diseño", "tipo": "externo", "bloque": "U", "x": null, "y": null, "piso": 0, "descripcion": "Diseño Gráfico y Diseño Digital, aulas U1 a U5", "direccion": "Av. Héctor Ormachea No 4899, esquina Calle 3, Obrajes" },
-  { "id": "bloque_v", "nombre": "Bloque V · Medicina", "tipo": "externo", "bloque": "V", "x": null, "y": null, "piso": 0, "descripcion": "Carrera de Medicina", "direccion": "Calle 13 de Obrajes esq. Av. Héctor Ormachea" },
-  { "id": "rectorado_nacional", "nombre": "Rectorado Nacional", "tipo": "externo", "bloque": null, "x": null, "y": null, "piso": 0, "descripcion": "Rectorado y Vicerrectorados Nacionales", "direccion": "Av. 14 de Septiembre y Calle 5, Obrajes" }
+  { "id": "x_i_n", "nombre": "el jardín entre el Bloque F y la Biblioteca", "tipo": "cruce", "bloque": null, "x": 538, "y": 238, "piso": 0, "descripcion": null, "direccion": null }
 ]

@@ -6,7 +6,7 @@ import Directorio from './components/Directorio';
 import Marca from './components/Marca';
 import { cargarDatos } from './lib/datos';
 import { calcularRuta, INGRESO_PRINCIPAL } from './lib/rutas';
-import type { DatosCampus } from './lib/tipos';
+import { esVisible, type DatosCampus } from './lib/tipos';
 
 type Pestana = 'eventos' | 'ruta' | 'directorio';
 
@@ -30,8 +30,8 @@ export default function App() {
 
   useEffect(() => {
     cargarDatos().then((d) => {
-      const ids = new Set(d.lugares.map((l) => l.id));
-      // Un QR o enlace con un id que ya no existe no debe romper la app.
+      const ids = new Set(d.lugares.filter(esVisible).map((l) => l.id));
+      // Un QR o enlace a un lugar que ya no está en el mapa no debe romper la app.
       setDesdeId((actual) => (ids.has(actual) ? actual : INGRESO_PRINCIPAL));
       setDesdeQR((qr) => qr && ids.has(inicial.get('desde') ?? ''));
       setHastaId((actual) => (actual && ids.has(actual) ? actual : null));
@@ -67,8 +67,6 @@ export default function App() {
   };
 
   const ruta = resultado?.ok ? resultado.ruta : null;
-  // Para destinos fuera del campus se resalta el punto de salida (el ingreso principal).
-  const destinoEnMapa = ruta?.externo ? ruta.hasta.id : hastaId;
   const tocado = datos && tocadoId ? datos.lugares.find((l) => l.id === tocadoId) : undefined;
   const depsTocado = datos && tocadoId ? datos.dependencias.filter((d) => d.lugar_id === tocadoId) : [];
 
@@ -112,7 +110,7 @@ export default function App() {
               datos={datos}
               ruta={ruta}
               desdeId={desdeId}
-              hastaId={destinoEnMapa}
+              hastaId={hastaId}
               modoGrafo={modoGrafo}
               onElegirLugar={setTocadoId}
             />

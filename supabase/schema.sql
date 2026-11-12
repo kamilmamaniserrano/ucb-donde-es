@@ -7,7 +7,7 @@
 create table if not exists public.lugares (
   id text primary key,
   nombre text not null,
-  tipo text not null check (tipo in ('ingreso', 'bloque', 'punto', 'cruce', 'externo')),
+  tipo text not null check (tipo in ('ingreso', 'bloque', 'punto', 'cruce')),
   bloque text,
   x numeric,            -- coordenadas en píxeles del plano (mapa-campus.png, 664×489)
   y numeric,

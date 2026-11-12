@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { enlaceGoogleMaps, formatoDistancia, formatoTiempo, type ResultadoRuta } from '../lib/rutas';
+import { formatoDistancia, formatoTiempo, type ResultadoRuta } from '../lib/rutas';
 import { esVisible, ordenarPorNombre, type DatosCampus } from '../lib/tipos';
 
 const ATAJOS = ['coliseo', 'paraninfo', 'biblioteca', 'cafeteria', 'bloque_k'];
@@ -19,7 +19,6 @@ interface Props {
 export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR, resultado, onDesde, onHasta, onAccesible }: Props) {
   const porId = useMemo(() => new Map(datos.lugares.map((l) => [l.id, l])), [datos]);
   const enCampus = useMemo(() => ordenarPorNombre(datos.lugares.filter(esVisible)), [datos]);
-  const externos = useMemo(() => ordenarPorNombre(datos.lugares.filter((l) => l.tipo === 'externo')), [datos]);
   const ingresos = enCampus.filter((l) => l.tipo === 'ingreso');
   const interiores = enCampus.filter((l) => l.tipo !== 'ingreso');
   const desde = porId.get(desdeId);
@@ -64,7 +63,7 @@ export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR,
           className="intercambiar"
           title="Intercambiar origen y destino"
           aria-label="Intercambiar origen y destino"
-          disabled={!hasta || hasta.tipo === 'externo'}
+          disabled={!hasta}
           onClick={() => {
             if (!hastaId) return;
             onDesde(hastaId);
@@ -79,11 +78,6 @@ export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR,
           <select value={hastaId ?? ''} onChange={(e) => onHasta(e.target.value || null)}>
             <option value="">Elige un destino…</option>
             {opcionesCampus}
-            <optgroup label="Fuera del campus principal">
-              {externos.map((l) => (
-                <option key={l.id} value={l.id}>{l.nombre}</option>
-              ))}
-            </optgroup>
           </select>
         </label>
 
@@ -143,16 +137,10 @@ export default function PanelRuta({ datos, desdeId, hastaId, accesible, desdeQR,
             ))}
             <li className="paso-llegada">
               <span>
-                Llegaste: <strong>{(ruta.externo ?? ruta.hasta).nombre}</strong>
+                Llegaste: <strong>{ruta.hasta.nombre}</strong>
               </span>
             </li>
           </ol>
-
-          {ruta.externo?.direccion && (
-            <a className="boton" href={enlaceGoogleMaps(ruta.externo.direccion)} target="_blank" rel="noreferrer">
-              Abrir el resto del camino en Google Maps
-            </a>
-          )}
 
           {datos.config.escala_calibrada === 0 && (
             <p className="nota">Distancias y tiempos estimados a partir del plano del campus (escala aproximada).</p>

@@ -8,7 +8,7 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
 - **Cómo llegar**: el algoritmo de Dijkstra calcula la ruta más corta sobre el grafo del campus. Muestra los
   pasos, los metros que se caminan, el tiempo aproximado y los pisos que se suben. Tiene un modo **sin escaleras**.
 - **Directorio**: buscador de oficinas, carreras y aulas (por ejemplo «Kardex», «Caja», «D12»), con las
-  dependencias del mapa oficial. Los bloques que están fuera del campus principal abren en Google Maps.
+  dependencias de los bloques del mapa. Solo incluye lugares dibujados en el mapa del campus principal.
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.
@@ -73,8 +73,7 @@ Si cambias los JSON de `src/data`, ejecuta `npm run seed` para regenerar `supaba
 ## Cómo está modelado el mapa
 
 - **lugares**: nodos del grafo. `x`, `y` son píxeles del plano (664×489). `tipo` puede ser `ingreso`, `bloque` o
-  `punto` (se ven en el mapa), `cruce` (intersección invisible) o `externo` (bloque fuera del campus, con
-  dirección). `piso` sirve para la navegación entre pisos; por ejemplo, el Paraninfo está en el piso 5 del
+  `punto` (se ven en el mapa) o `cruce` (intersección invisible). `piso` sirve para la navegación entre pisos; por ejemplo, el Paraninfo está en el piso 5 del
   Bloque D.
 - **caminos**: aristas, que se pueden recorrer en ambos sentidos. `tipo` puede ser `camino`, `escaleras`, `rampa`
   o `ascensor`; el modo sin escaleras descarta las `escaleras`. `distancia_m` puede quedar vacío, y entonces se
@@ -92,11 +91,14 @@ Si cambias los JSON de `src/data`, ejecuta `npm run seed` para regenerar `supaba
 
 ### Calibrar la escala
 
-No hay medidas reales del campus, así que la escala inicial (0,45 m/px) se estimó con el tamaño de los edificios
-del plano. Para calibrarla:
+La escala actual es **0,478 m por píxel**. Se calibró recorriendo el frente del campus sobre la Av. 14 de
+Septiembre, de extremo a extremo: 212 pasos de 3¼ pies (0,99 m), unos 210 m, que en el plano son 439 px (de x=195 a
+x=634).
+
+Si se hace una medición mejor:
 
 1. Mide en el campus la distancia **en línea recta** entre dos puntos del mapa. Por ejemplo, del ingreso principal
-   a la puerta del Coliseo, con cinta, contando pasos de unos 0,75 m o con «Medir distancia» de Google Maps.
+   a la puerta del Coliseo, con cinta, contando pasos o con «Medir distancia» de Google Maps.
 2. En `/admin → Escala del mapa`, elige esos dos puntos y escribe los metros.
 
 Todas las distancias y los tiempos se recalculan solos.
@@ -110,5 +112,4 @@ El grafo se armó a partir del plano oficial, así que hay supuestos que convien
       gradas Ágora → Bloques B/C, las gradas junto al Bloque L y las escaleras internas del Bloque D.
 - [ ] Si el Bloque D tiene ascensor hasta el piso 5. Si lo tiene, agrega un camino `bloque_d → paraninfo` con
       `tipo = 'ascensor'` y el Paraninfo quedará accesible sin escaleras.
-- [ ] La dirección del Rectorado Nacional (tomada del plano, aproximada).
 - [ ] El lugar y los horarios de los eventos marcados como «Por confirmar».

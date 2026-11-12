@@ -1,6 +1,6 @@
 {
-  "metros_por_pixel": 0.45,
-  "escala_calibrada": 0,
+  "metros_por_pixel": 0.478,
+  "escala_calibrada": 1,
   "velocidad_m_s": 1.2,
   "velocidad_accesible_m_s": 0.8,
   "velocidad_escaleras_m_s": 0.5,

@@ -185,10 +185,7 @@ function PanelAdmin({ email }: { email: string }) {
 function EditorEventos({ datos, alGuardar }: { datos: DatosCampus; alGuardar: () => void }) {
   const [form, setForm] = useState<Formulario>(VACIO);
   const [mensaje, setMensaje] = useState<{ texto: string; error: boolean } | null>(null);
-  const lugares = useMemo(
-    () => ordenarPorNombre(datos.lugares.filter((l) => esVisible(l) || l.tipo === 'externo')),
-    [datos],
-  );
+  const lugares = useMemo(() => ordenarPorNombre(datos.lugares.filter(esVisible)), [datos]);
   const nombreLugar = (id: string) => datos.lugares.find((l) => l.id === id)?.nombre ?? id;
   const eventos = [...datos.eventos].sort((a, b) => Date.parse(b.inicio) - Date.parse(a.inicio));
   const cambiar = <K extends keyof Formulario>(campo: K, valor: Formulario[K]) => setForm((f) => ({ ...f, [campo]: valor }));

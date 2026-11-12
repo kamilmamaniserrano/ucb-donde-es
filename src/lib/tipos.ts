@@ -1,4 +1,4 @@
-export type TipoLugar = 'ingreso' | 'bloque' | 'punto' | 'cruce' | 'externo';
+export type TipoLugar = 'ingreso' | 'bloque' | 'punto' | 'cruce';
 
 /** Punto del grafo. x/y están en píxeles del plano (mapa-campus.png, 664×489). */
 export interface Lugar {
@@ -61,9 +61,9 @@ export interface DatosCampus {
   origen: 'supabase' | 'local';
 }
 
-/** Lugares que se dibujan en el mapa y pueden ser origen de una ruta. */
+/** Lugares que se dibujan en el mapa: los únicos que se ofrecen como origen o destino. */
 export function esVisible(l: Lugar): l is Lugar & { x: number; y: number } {
-  return l.tipo !== 'cruce' && l.tipo !== 'externo' && l.x != null && l.y != null;
+  return l.tipo !== 'cruce' && l.x != null && l.y != null;
 }
 
 export function ordenarPorNombre<T extends { nombre: string }>(lista: T[]): T[] {

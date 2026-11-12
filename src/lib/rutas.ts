@@ -8,7 +8,7 @@ export interface Paso {
   distancia_m: number;
   /** Pisos que se suben o bajan en este paso. */
   pisos: number;
-  tipo: TipoCamino | 'salida';
+  tipo: TipoCamino;
 }
 
 export interface Segmento {
@@ -19,10 +19,7 @@ export interface Segmento {
 
 export interface Ruta {
   desde: Lugar;
-  /** Último punto dentro del campus (para destinos externos es el ingreso principal). */
   hasta: Lugar;
-  /** Destino fuera del campus principal, si corresponde. */
-  externo: Lugar | null;
   pasos: Paso[];
   segmentos: Segmento[];
   /** Metros caminados en horizontal (sin contar los pisos). */
@@ -63,13 +60,9 @@ export function calcularRuta(datos: DatosCampus, desdeId: string, hastaId: strin
   const cfg = datos.config;
   const porId = new Map(datos.lugares.map((l) => [l.id, l]));
   const desde = porId.get(desdeId);
-  const destino = porId.get(hastaId);
-  if (!desde || !destino) return { ok: false, motivo: 'Elige de dónde sales y a dónde vas.' };
-
-  const externo = destino.tipo === 'externo' ? destino : null;
-  const hasta = externo ? porId.get(INGRESO_PRINCIPAL) : destino;
-  if (!hasta) return { ok: false, motivo: 'Falta el ingreso principal en los datos del mapa.' };
-  if (desde.id === hasta.id && !externo) return { ok: false, motivo: 'Ya estás en ese lugar.' };
+  const hasta = porId.get(hastaId);
+  if (!desde || !hasta) return { ok: false, motivo: 'Elige de dónde sales y a dónde vas.' };
+  if (desde.id === hasta.id) return { ok: false, motivo: 'Ya estás en ese lugar.' };
 
   const ady = new Map<string, Arista[]>();
   const agregar = (id: string, arista: Arista) => {
@@ -147,21 +140,11 @@ export function calcularRuta(datos: DatosCampus, desdeId: string, hastaId: strin
     }
   }
 
-  if (externo) {
-    pasos.push({
-      texto: `Sal por el ingreso principal y dirígete a ${externo.nombre}: ${externo.direccion ?? 'fuera del campus principal'}`,
-      distancia_m: 0,
-      pisos: 0,
-      tipo: 'salida',
-    });
-  }
-
   return {
     ok: true,
     ruta: {
       desde,
       hasta,
-      externo,
       pasos,
       segmentos,
       distancia_m: caminado,
@@ -169,10 +152,6 @@ export function calcularRuta(datos: DatosCampus, desdeId: string, hastaId: strin
       pisos,
     },
   };
-}
-
-export function enlaceGoogleMaps(direccion: string): string {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${direccion}, La Paz, Bolivia`)}`;
 }
 
 export function formatoDistancia(m: number): string {
