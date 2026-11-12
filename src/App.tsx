@@ -1,4 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
+import Asistente, { type AccionAsistente } from './components/Asistente';
 import MapaCampus from './components/MapaCampus';
 import PanelRuta from './components/PanelRuta';
 import ListaEventos from './components/ListaEventos';
@@ -101,6 +102,33 @@ export default function App() {
   const dejarGps = () => {
     setSiguiendoGps(false);
     detenerGps();
+  };
+
+  const alAccionDelAsistente = (accion: AccionAsistente) => {
+    switch (accion.tipo) {
+      case 'ir':
+        if (accion.desdeId) cambiarDesde(accion.desdeId);
+        if (accion.accesible) setAccesible(true);
+        irA(accion.lugarId);
+        break;
+      case 'eventos':
+        setPestana('eventos');
+        break;
+      case 'directorio':
+        setPestana('directorio');
+        break;
+      case 'vista3d':
+        setVista3d(true);
+        break;
+      case 'gps':
+        setPestana('ruta');
+        usarGps();
+        break;
+      case 'accesible':
+        setAccesible(true);
+        setPestana('ruta');
+        break;
+    }
   };
 
   const ruta = resultado?.ok ? resultado.ruta : null;
@@ -208,6 +236,7 @@ export default function App() {
           </section>
         </main>
       )}
+      {datos && <Asistente datos={datos} desdeId={desdeId} accesible={accesible} onAccion={alAccionDelAsistente} />}
     </div>
   );
 }

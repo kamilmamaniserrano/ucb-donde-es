@@ -13,6 +13,10 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
   lugar más cercano como origen de la ruta, actualizándolo mientras camina.
 - **Vista 3D**: con el botón «Ver en 3D», los bloques se levantan según sus pisos. La ruta se ve en 3D (por ejemplo,
   sube por el Bloque D hasta el Paraninfo, en el piso 5) y el piso de destino se ilumina.
+- **Asistente** (botón «¿Necesitas ayuda?»): chat que responde en español cómo llegar a lugares, oficinas y aulas,
+  qué eventos hay y cómo usar la página (GPS, QR, 3D, ruta sin escaleras, calendario). Sus respuestas traen botones
+  que ejecutan la acción: mostrar la ruta, activar el GPS, abrir la vista 3D, etc. Funciona dentro de la página, sin
+  servicios externos ni costo (`src/lib/asistente.ts`).
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.

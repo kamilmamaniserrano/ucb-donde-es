@@ -9,3 +9,6 @@ dist
 
 *.log
 .DS_Store
+
+# Videos del relevamiento del campus: pesan mucho y no forman parte de la app
+videos/

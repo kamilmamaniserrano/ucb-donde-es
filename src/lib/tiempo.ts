@@ -13,6 +13,9 @@ const fNumero = formato({ day: 'numeric' });
 const fMes = formato({ month: 'short' });
 const fClaveDia = new Intl.DateTimeFormat('en-CA', { timeZone: ZONA, year: 'numeric', month: '2-digit', day: '2-digit' });
 
+/** Fecha en La Paz como "AAAA-MM-DD", para comparar días. */
+export const claveDia = (fecha: Date) => fClaveDia.format(fecha);
+
 export type EstadoEvento = 'en-curso' | 'proximo' | 'finalizado';
 
 export function estadoEvento(e: Evento, ahora = Date.now()): EstadoEvento {

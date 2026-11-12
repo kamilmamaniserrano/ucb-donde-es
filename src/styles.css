@@ -876,6 +876,148 @@ code {
   font-size: 10px;
 }
 
+/* ---------- Asistente ---------- */
+
+.boton-asistente {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1300;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--naranja-osc);
+  color: var(--blanco);
+  padding: 12px 18px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(20, 22, 60, 0.3);
+}
+
+.boton-asistente:hover {
+  background: #a6370a;
+}
+
+.asistente {
+  position: fixed;
+  right: 16px;
+  bottom: 78px;
+  z-index: 1300;
+  width: min(390px, calc(100vw - 32px));
+  height: min(580px, calc(100dvh - 110px));
+  background: var(--blanco);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(20, 22, 60, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.asistente-cabecera {
+  background: var(--azul);
+  color: var(--blanco);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.asistente-cabecera div {
+  display: flex;
+  flex-direction: column;
+}
+
+.asistente-cabecera small {
+  opacity: 0.85;
+  font-size: 0.78rem;
+}
+
+.asistente-cabecera .cerrar {
+  border: 0;
+  background: none;
+  color: var(--blanco);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.asistente-mensajes {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--fondo);
+}
+
+.mensaje {
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mensaje p {
+  white-space: pre-line;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.mensaje-asistente {
+  align-self: flex-start;
+}
+
+.mensaje-asistente p {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-top-left-radius: 4px;
+}
+
+.mensaje-persona {
+  align-self: flex-end;
+}
+
+.mensaje-persona p {
+  background: var(--azul);
+  color: var(--blanco);
+  border-top-right-radius: 4px;
+}
+
+.mensaje-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.asistente-entrada {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--borde);
+  background: var(--blanco);
+}
+
+.asistente-entrada input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 16px; /* evita que iPhone haga zoom al escribir */
+}
+
+.asistente-entrada input:focus {
+  outline: 2px solid var(--azul);
+  outline-offset: -1px;
+}
+
 /* ---------- Páginas de administración y QR ---------- */
 
 .pagina {
@@ -1017,6 +1159,20 @@ code {
   .admin-columnas,
   .dos-campos {
     grid-template-columns: 1fr;
+  }
+
+  .asistente {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80dvh;
+    border-radius: 18px 18px 0 0;
+  }
+
+  /* Con el chat abierto, el botón flotante taparía el campo de texto: se cierra con la ×. */
+  .boton-asistente[aria-expanded='true'] {
+    display: none;
   }
 }
 
