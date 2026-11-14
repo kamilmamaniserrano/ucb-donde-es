@@ -6,7 +6,9 @@ import ListaEventos from './components/ListaEventos';
 import Directorio from './components/Directorio';
 import InteriorBloque from './components/InteriorBloque';
 import Marca from './components/Marca';
+import VisorFotos from './components/VisorFotos';
 import { cargarDatos, PUNTOS_GPS_LOCALES } from './lib/datos';
+import { fotosDe } from './lib/fotos';
 import { ajustarACamino, crearGeorreferencia, origenDesdeGps } from './lib/gps';
 import { cargarInteriores, type Interior } from './lib/interiores';
 import { calcularRuta, INGRESO_PRINCIPAL } from './lib/rutas';
@@ -41,6 +43,8 @@ export default function App() {
   const [interiores, setInteriores] = useState<Interior[]>([]);
   // Bloque abierto en la vista de pisos y aulas (y el aula a mostrar, si se pidió una).
   const [interiorAbierto, setInteriorAbierto] = useState<{ lugarId: string; aula: string | null; nivel?: string } | null>(null);
+  // Lugar cuyas fotos se ven a pantalla completa.
+  const [fotosAbiertasId, setFotosAbiertasId] = useState<string | null>(null);
 
   useEffect(() => {
     cargarDatos().then((d) => {
@@ -156,6 +160,8 @@ export default function App() {
   const ruta = resultado?.ok ? resultado.ruta : null;
   const tocado = datos && tocadoId ? datos.lugares.find((l) => l.id === tocadoId) : undefined;
   const depsTocado = datos && tocadoId ? datos.dependencias.filter((d) => d.lugar_id === tocadoId) : [];
+  const fotosTocado = tocadoId ? fotosDe(tocadoId) : [];
+  const lugarConFotos = datos && fotosAbiertasId ? datos.lugares.find((l) => l.id === fotosAbiertasId) : undefined;
 
   return (
     <div className="app">
@@ -232,14 +238,29 @@ export default function App() {
                 <button type="button" className="cerrar" aria-label="Cerrar" onClick={() => setTocadoId(null)}>
                   ×
                 </button>
-                <strong>{tocado.nombre}</strong>
-                {tocado.descripcion && <p>{tocado.descripcion}</p>}
-                {depsTocado.length > 0 && (
-                  <p className="suave">
-                    {depsTocado.slice(0, 3).map((d) => d.nombre).join(' · ')}
-                    {depsTocado.length > 3 && ` y ${depsTocado.length - 3} más`}
-                  </p>
-                )}
+                <div className="tarjeta-lugar-info">
+                  {fotosTocado.length > 0 && (
+                    <button
+                      type="button"
+                      className="miniatura"
+                      aria-label={`Ver ${fotosTocado.length > 1 ? 'las fotos' : 'la foto'} de ${tocado.nombre}`}
+                      onClick={() => setFotosAbiertasId(tocado.id)}
+                    >
+                      <img src={fotosTocado[0].mini} alt="" />
+                      <span>{fotosTocado.length > 1 ? `${fotosTocado.length} fotos` : 'Ampliar'}</span>
+                    </button>
+                  )}
+                  <div>
+                    <strong>{tocado.nombre}</strong>
+                    {tocado.descripcion && <p>{tocado.descripcion}</p>}
+                    {depsTocado.length > 0 && (
+                      <p className="suave">
+                        {depsTocado.slice(0, 3).map((d) => d.nombre).join(' · ')}
+                        {depsTocado.length > 3 && ` y ${depsTocado.length - 3} más`}
+                      </p>
+                    )}
+                  </div>
+                </div>
                 <div className="acciones">
                   <button type="button" className="boton" onClick={() => irA(tocado.id)}>
                     Ir aquí
@@ -286,6 +307,9 @@ export default function App() {
             irA(interior.lugar_id);
           }}
         />
+      )}
+      {lugarConFotos && (
+        <VisorFotos titulo={lugarConFotos.nombre} fotos={fotosDe(lugarConFotos.id)} onCerrar={() => setFotosAbiertasId(null)} />
       )}
     </div>
   );

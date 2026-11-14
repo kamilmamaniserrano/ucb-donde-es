@@ -21,6 +21,8 @@ campus (Av. 14 de Septiembre, Obrajes). Prototipo para el Reto FDI de TECH MECH 
 - **Bloque C por dentro** (botón «Pisos y aulas»): croquis de cada piso, laboratorios y el horario semanal de las
   aulas, con el estado en vivo («Ahora: Control I hasta 17:30» / «Libre ahora»). Se busca por aula, materia, sigla
   o docente en el directorio y en el chat, y se abre directo con `?aula=C-201`.
+- **Fotos de los lugares**: al tocar un lugar en el mapa (2D o 3D), la tarjeta muestra una miniatura de su entrada;
+  al tocarla, la foto se ve en grande, con flechas si hay más de una.
 - **Códigos QR** (`/qr`): una hoja imprimible con un QR por lugar. Al escanearlo, la app sabe dónde está la
   persona y usa ese lugar como origen.
 - **Administración** (`/admin`): CRUD de eventos y calibración de la escala del mapa.
@@ -175,6 +177,16 @@ navegador ──► /api/chat (función de Vercel, api/chat.ts) ──► Gemini
 - **Hora:** la «clase actual» se calcula con la hora de La Paz (UTC−4), sin importar la zona del celular.
 - **Agregar otro bloque:** se crea otro JSON con el mismo formato y se agrega a `ARCHIVOS` en
   `src/lib/interiores.ts`. Por ahora, el asistente con IA solo recibe los horarios del Bloque C (`api/chat.ts`).
+
+## Fotos de los lugares
+
+- **Imágenes:** `public/lugares/`, cada foto en dos tamaños: `<nombre>.jpg` (1280 px de ancho, unos 200 KB) para
+  verla en grande y `<nombre>-mini.jpg` (360 px, unos 18 KB) para la miniatura de la tarjeta.
+- **A qué lugar va cada foto:** `FOTOS` en `src/lib/fotos.ts`, por id de lugar. La primera es la portada, y cada una
+  lleva un pie de foto que ayuda a reconocer la entrada.
+- **Agregar una foto:** se guardan las dos versiones en `public/lugares/` y se agrega una línea en `FOTOS`. Las
+  originales (`imagenes portadas para el mapa/`) están ignoradas por git.
+- **Lugares sin foto todavía:** los ingresos, el Atrio, la Capilla y el Bloque J.
 
 ## GPS (georreferencia del plano)
 
